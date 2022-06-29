@@ -11,7 +11,8 @@ const {
   forgotPassword,
   emailVerification,
   changePassword,
-  changeName
+  changeName,
+  deleteUser
 } = require('../controllers/users');
 const authenticateUser = require('../middleware/authenticateUser');
 
@@ -50,5 +51,12 @@ usersRouter.put('/password',
 );
 
 usersRouter.put('/name/:name', authenticateUser, changeName);
+
+usersRouter.delete('/delete/:id',
+  checkPassword,
+  validateRequest,
+  authenticateUser,
+  deleteUser
+);
 
 module.exports = usersRouter;

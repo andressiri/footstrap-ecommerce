@@ -5,5 +5,6 @@ module.exports = {
   verificationCode: require('./verificationCode'),
   forgotPassword: require('./forgotPassword'),
   emailVerification: require('./emailVerification'),
-  changePassword: require('./changePassword')
+  changePassword: require('./changePassword'),
+  changeName: require('./changeName')
 };

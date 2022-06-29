@@ -3,7 +3,8 @@ const express = require('express');
 const usersRouter = express.Router();
 const { check } = require('express-validator');
 const validateRequest = require('../middleware/validateRequest');
-const { register, login } = require('../controllers/users');
+const { register, login, userData } = require('../controllers/users');
+const authenticateUser = require('../middleware/authenticateUser');
 
 usersRouter.post('/register',
   check('name')
@@ -28,5 +29,7 @@ usersRouter.post('/login',
   validateRequest,
   login
 );
+
+usersRouter.get('/me', authenticateUser, userData);
 
 module.exports = usersRouter;

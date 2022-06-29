@@ -3,7 +3,7 @@
 // @access  Private
 const asyncHandler = require('express-async-handler');
 const { User } = require('../../models');
-const generateToken = require('../../helpers/generateToken.js');
+const generateToken = require('../../helpers/generateToken');
 
 module.exports = asyncHandler(async (req, res) => {
   let userData = await User.findOne({

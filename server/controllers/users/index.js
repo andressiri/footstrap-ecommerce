@@ -7,5 +7,6 @@ module.exports = {
   emailVerification: require('./emailVerification'),
   changePassword: require('./changePassword'),
   changeName: require('./changeName'),
-  deleteUser: require('./deleteUser')
+  deleteUser: require('./deleteUser'),
+  logout: require('./logout')
 };

@@ -30,6 +30,6 @@ app.use(session({
 app.use('/api/v1', require('./routes'));
 
 // Error handler
-app.use(require('./middleware/errorMiddleware'));
+app.use(require('./middleware/errorHandler'));
 
 module.exports = app;

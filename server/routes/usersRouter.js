@@ -9,7 +9,8 @@ const {
   userData,
   verificationCode,
   forgotPassword,
-  emailVerification
+  emailVerification,
+  changePassword
 } = require('../controllers/users');
 const authenticateUser = require('../middleware/authenticateUser');
 
@@ -39,5 +40,12 @@ usersRouter.post('/forgot-password',
 );
 
 usersRouter.put('/verification/:code', emailVerification);
+
+usersRouter.put('/password',
+  authenticateUser,
+  checkPassword,
+  validateRequest,
+  changePassword
+);
 
 module.exports = usersRouter;

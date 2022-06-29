@@ -2,5 +2,6 @@ module.exports = {
   register: require('./register'),
   login: require('./login'),
   userData: require('./userData'),
-  forgotPassword: require('./forgotPassword')
+  forgotPassword: require('./forgotPassword'),
+  emailVerification: require('./emailVerification')
 };

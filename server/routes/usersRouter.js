@@ -3,7 +3,7 @@ const express = require('express');
 const usersRouter = express.Router();
 const { checkName, checkEmail, checkPassword } = require('../helpers/validatorChecks');
 const validateRequest = require('../middleware/validateRequest');
-const { register, login, userData, forgotPassword } = require('../controllers/users');
+const { register, login, userData, forgotPassword, emailVerification } = require('../controllers/users');
 const authenticateUser = require('../middleware/authenticateUser');
 
 usersRouter.post('/register',
@@ -28,5 +28,7 @@ usersRouter.post('/forgot-password',
   validateRequest,
   forgotPassword
 );
+
+usersRouter.put('/verification/:code', emailVerification);
 
 module.exports = usersRouter;

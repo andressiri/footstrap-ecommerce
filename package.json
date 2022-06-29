@@ -1,0 +1,16 @@
+{
+  "name": "footstrap",
+  "version": "0.0.0",
+  "description": "Footstrap website for a shoe shop developed to solve a challenge",
+  "scripts": {
+    "eslint": "eslint .",
+    "eslint:fix": "eslint --fix ."
+  },
+  "devDependencies": {
+    "eslint": "~8.18.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "~2.26.0",
+    "eslint-plugin-n": "~15.2.3",
+    "eslint-plugin-promise": "^6.0.0"
+  }
+}

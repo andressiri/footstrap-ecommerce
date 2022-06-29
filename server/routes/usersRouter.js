@@ -3,7 +3,14 @@ const express = require('express');
 const usersRouter = express.Router();
 const { checkName, checkEmail, checkPassword } = require('../helpers/validatorChecks');
 const validateRequest = require('../middleware/validateRequest');
-const { register, login, userData, forgotPassword, emailVerification } = require('../controllers/users');
+const {
+  register,
+  login,
+  userData,
+  verificationCode,
+  forgotPassword,
+  emailVerification
+} = require('../controllers/users');
 const authenticateUser = require('../middleware/authenticateUser');
 
 usersRouter.post('/register',
@@ -22,6 +29,8 @@ usersRouter.post('/login',
 );
 
 usersRouter.get('/me', authenticateUser, userData);
+
+usersRouter.post('/verification', authenticateUser, verificationCode);
 
 usersRouter.post('/forgot-password',
   checkEmail,

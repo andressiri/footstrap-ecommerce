@@ -1,35 +1,32 @@
 // @api/v1/users
 const express = require('express');
 const usersRouter = express.Router();
-const { check } = require('express-validator');
+const { checkName, checkEmail, checkPassword } = require('../helpers/validatorChecks');
 const validateRequest = require('../middleware/validateRequest');
-const { register, login, userData } = require('../controllers/users');
+const { register, login, userData, forgotPassword } = require('../controllers/users');
 const authenticateUser = require('../middleware/authenticateUser');
 
 usersRouter.post('/register',
-  check('name')
-    .not().isEmpty().withMessage('Please send a name'),
-  check('email')
-    .not().isEmpty().withMessage('Please send an email')
-    .isEmail().withMessage('Please send a valid email'),
-  check('password')
-    .not().isEmpty().withMessage('Please send a password')
-    .isLength({ min: 6 }).withMessage('Password must have at least six characters'),
+  checkName,
+  checkEmail,
+  checkPassword,
   validateRequest,
   register
 );
 
 usersRouter.post('/login',
-  check('email')
-    .not().isEmpty().withMessage('Please send an email')
-    .isEmail().withMessage('Please send a valid email'),
-  check('password')
-    .not().isEmpty().withMessage('Please send a password')
-    .isLength({ min: 6 }).withMessage('Password must have at least six characters'),
+  checkEmail,
+  checkPassword,
   validateRequest,
   login
 );
 
 usersRouter.get('/me', authenticateUser, userData);
+
+usersRouter.post('/forgot-password',
+  checkEmail,
+  validateRequest,
+  forgotPassword
+);
 
 module.exports = usersRouter;

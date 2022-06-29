@@ -4,19 +4,25 @@
   "description": "Server for Footstrap website dedicated API",
   "main": "./bin/www",
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "start": "cross-env NODE_ENV=development node ./bin/www",
+    "dev": "cross-env NODE_ENV=development nodemon ./bin/www"
   },
   "author": "Andrés Siri",
   "license": "ISC",
   "dependencies": {
+    "cross-env": "~7.0.3",
+    "custom-env": "~2.0.1",
     "debug": "~2.6.9",
     "dotenv": "~16.0.1",
     "express": "~4.16.1",
     "express-async-handler": "~1.2.0",
-    "express-session": "~1.17.3"
+    "express-session": "~1.17.3",
+    "pg": "~8.7.3",
+    "pg-hstore": "~2.3.4",
+    "sequelize": "~6.21.2"
   },
   "devDependencies": {
-    "nodemon": "~2.0.18"
+    "nodemon": "~2.0.18",
+    "sequelize-cli": "~6.4.1"
   }
 }

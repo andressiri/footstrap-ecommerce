@@ -7,6 +7,7 @@
 const app = require('../app');
 const debug = require('debug')('server:server');
 const http = require('http');
+const devEnvironment = process.env.NODE_ENV === 'development';
 
 /**
   * Get port from environment and store in Express.
@@ -65,11 +66,11 @@ function onError (error) {
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      if (process.env.NODE_ENV === 'development') console.error(bind + ' requires elevated privileges'); // eslint-disable-line no-console
+      if (devEnvironment) console.error(bind + ' requires elevated privileges'); // eslint-disable-line no-console
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      if (process.env.NODE_ENV === 'development') console.error(bind + ' is already in use'); // eslint-disable-line no-console
+      if (devEnvironment) console.error(bind + ' is already in use'); // eslint-disable-line no-console
       process.exit(1);
       break;
     default:
@@ -87,5 +88,5 @@ function onListening () {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
-  if (process.env.NODE_ENV === 'development') console.log(`Listening on port ${port}...`); // eslint-disable-line no-console
+  if (devEnvironment) console.log(`Listening on port ${port}...`); // eslint-disable-line no-console
 }

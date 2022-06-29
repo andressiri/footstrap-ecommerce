@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "description": "Server for Footstrap website dedicated API",
+  "main": "./bin/www",
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www"
+  },
+  "author": "Andrés Siri",
+  "license": "ISC",
+  "dependencies": {
+    "debug": "~2.6.9",
+    "dotenv": "~16.0.1",
+    "express": "~4.16.1",
+    "express-async-handler": "~1.2.0",
+    "express-session": "~1.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "~2.0.18"
+  }
+}

@@ -1,3 +1,4 @@
 module.exports = {
-  createProduct: require('./createProduct')
+  createProduct: require('./createProduct'),
+  getProducts: require('./getProducts')
 };

@@ -2,7 +2,7 @@
 // @route POST /api/v1/products
 // @access Private
 const asyncHandler = require('express-async-handler');
-const { Product } = require('../../models');
+const { Product, Brand } = require('../../models');
 const { uploadFile } = require('../../helpers/uploadFile');
 
 module.exports = asyncHandler(async (req, res) => {
@@ -32,5 +32,14 @@ module.exports = asyncHandler(async (req, res) => {
     type
   });
 
-  res.status(201).json({ message: 'Product created', productData: createResult.dataValues });
+  const brand = await Brand.findByPk(brandId, {
+    attributes: ['name', 'logo_url', 'country']
+  });
+
+  const productData = {
+    ...createResult.dataValues,
+    brand
+  };
+
+  res.status(201).json({ message: 'Product created', productData });
 });

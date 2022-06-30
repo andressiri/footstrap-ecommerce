@@ -33,12 +33,6 @@ module.exports = {
         country: 'United States',
         createdAt: new Date(),
         updatedAt: new Date()
-      }, {
-        name: 'Fila',
-        logo_url: 'https://footstrapdevbucket.s3.sa-east-1.amazonaws.com/brands/fila_logo.png',
-        country: 'Italy',
-        createdAt: new Date(),
-        updatedAt: new Date()
       }
     ], {});
   },

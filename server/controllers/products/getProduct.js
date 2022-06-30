@@ -1,4 +1,4 @@
-// @description Get product
+// @description Get product by id
 // @route GET /api/v1/products/:id
 // @access Public
 const asyncHandler = require('express-async-handler');

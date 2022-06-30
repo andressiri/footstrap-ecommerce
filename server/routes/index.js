@@ -6,4 +6,6 @@ router.use('/users', require('./usersRouter'));
 
 router.use('/products', require('./productsRouter'));
 
+router.use('/brands', require('./brandsRouter'));
+
 module.exports = router;

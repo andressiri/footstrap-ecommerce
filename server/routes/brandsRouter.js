@@ -4,7 +4,7 @@ const brandsRouter = express.Router();
 const { checkName } = require('../helpers/validatorChecks');
 const authenticateUser = require('../middleware/authenticateUser');
 const validateRequest = require('../middleware/validateRequest');
-const { createBrand } = require('../controllers/brands');
+const { createBrand, getBrandProducts } = require('../controllers/brands');
 
 brandsRouter.post('/',
   authenticateUser,
@@ -12,5 +12,7 @@ brandsRouter.post('/',
   validateRequest,
   createBrand
 );
+
+brandsRouter.get('/:id/products', getBrandProducts);
 
 module.exports = brandsRouter;

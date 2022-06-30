@@ -1,3 +1,4 @@
 module.exports = {
-  createBrand: require('./createBrand')
+  createBrand: require('./createBrand'),
+  getBrandProducts: require('./getBrandProducts')
 };

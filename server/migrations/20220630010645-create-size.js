@@ -3,10 +3,10 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable('Sizes', {
       id: {
-        type: Sequelize.UUIDV4,
+        type: Sequelize.UUID,
         allowNull: false,
         primaryKey: true,
-        defaultValue: Sequelize.UUIDV4
+        defaultValue: Sequelize.UUID
       },
       productId: {
         type: Sequelize.UUID,

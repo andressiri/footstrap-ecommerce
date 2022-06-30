@@ -9,7 +9,7 @@ const {
 } = require('../helpers/validatorChecks');
 const authenticateUser = require('../middleware/authenticateUser');
 const validateRequest = require('../middleware/validateRequest');
-const { createProduct, getProducts } = require('../controllers/products');
+const { createProduct, getProducts, getProduct } = require('../controllers/products');
 
 productsRouter.post('/',
   authenticateUser,
@@ -22,5 +22,7 @@ productsRouter.post('/',
 );
 
 productsRouter.get('/', getProducts);
+
+productsRouter.get('/:id', getProduct);
 
 module.exports = productsRouter;

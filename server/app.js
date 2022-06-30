@@ -1,9 +1,17 @@
 const express = require('express');
 const session = require('express-session');
+const fileUpload = require('express-fileupload');
 require('custom-env').env(process.env.NODE_ENV);
 const devEnvironment = process.env.NODE_ENV === 'development';
 
 const app = express();
+
+// Setup fileupload for formdata/multipart
+app.use(fileUpload({
+  useTempFiles: true,
+  tempFileDir: '/tmp/',
+  createParentPath: true
+}));
 
 // Test database connection
 const db = require('./models');

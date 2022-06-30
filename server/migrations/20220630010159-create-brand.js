@@ -21,9 +21,6 @@ module.exports = {
       country: {
         type: Sequelize.STRING
       },
-      products: {
-        type: Sequelize.UUID
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

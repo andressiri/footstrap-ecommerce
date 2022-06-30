@@ -11,7 +11,13 @@ module.exports = {
       productId: {
         type: Sequelize.UUID,
         allowNull: false,
-        unique: true
+        unique: true,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Products',
+          key: 'id',
+          as: 'productId'
+        }
       },
       35: {
         type: Sequelize.INTEGER

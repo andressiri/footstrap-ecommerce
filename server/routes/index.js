@@ -4,4 +4,6 @@ const router = express.Router();
 
 router.use('/users', require('./usersRouter'));
 
+router.use('/products', require('./productsRouter'));
+
 module.exports = router;

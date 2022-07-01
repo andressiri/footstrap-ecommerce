@@ -1,6 +1,6 @@
-// @description  Handle change password
-// @route  PUT /api/v1/users/password
-// @access  Private
+// @description Handle change password
+// @route PUT /api/v1/users/password
+// @access Private
 const asyncHandler = require('express-async-handler');
 const hashPassword = require('../../helpers/hashPassword');
 const { User } = require('../../models');

@@ -1,6 +1,6 @@
-// @description  Send email verification code
-// @route  POST /api/v1/users/forgot-password
-// @access  Public
+// @description Send email verification code
+// @route POST /api/v1/users/forgot-password
+// @access Public
 const asyncHandler = require('express-async-handler');
 const { User } = require('../../models');
 const requestTimeLimiter = require('../../helpers/requestTimeLimiter');

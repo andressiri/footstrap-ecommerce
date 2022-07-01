@@ -3,6 +3,7 @@ const express = require('express');
 const brandsRouter = express.Router();
 const { checkName } = require('../helpers/validatorChecks');
 const authenticateUser = require('../middleware/authenticateUser');
+const checkAdmin = require('../middleware/checkAdmin');
 const validateRequest = require('../middleware/validateRequest');
 const {
   createBrand,
@@ -16,6 +17,7 @@ const {
 
 brandsRouter.post('/',
   authenticateUser,
+  checkAdmin,
   checkName,
   validateRequest,
   createBrand
@@ -29,13 +31,14 @@ brandsRouter.get('/:id/products', getBrandProducts);
 
 brandsRouter.put('/:id',
   authenticateUser,
+  checkAdmin,
   checkName,
   validateRequest,
   updateBrand
 );
 
-brandsRouter.delete('/:id', authenticateUser, deleteBrand);
+brandsRouter.delete('/:id', authenticateUser, checkAdmin, deleteBrand);
 
-brandsRouter.delete('/:id/products', authenticateUser, deleteBrandProducts);
+brandsRouter.delete('/:id/products', authenticateUser, checkAdmin, deleteBrandProducts);
 
 module.exports = brandsRouter;

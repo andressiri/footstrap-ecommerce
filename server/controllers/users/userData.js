@@ -1,6 +1,6 @@
-// @description  Get user data
-// @route  GET /api/v1/users/me
-// @access  Private
+// @description Get user data
+// @route GET /api/v1/users/me
+// @access Private
 const asyncHandler = require('express-async-handler');
 const { User } = require('../../models');
 const generateToken = require('../../helpers/generateToken');

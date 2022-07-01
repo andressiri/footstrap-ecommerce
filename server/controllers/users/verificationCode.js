@@ -1,6 +1,6 @@
-// @description  Send email verification code
-// @route  POST /api/v1/users/verification
-// @access  Private
+// @description Send email verification code
+// @route POST /api/v1/users/verification
+// @access Private
 const asyncHandler = require('express-async-handler');
 const requestTimeLimiter = require('../../helpers/requestTimeLimiter');
 const generateCode = require('../../helpers/generateCode');

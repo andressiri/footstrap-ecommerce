@@ -1,6 +1,6 @@
 // @description  Handle login authentication
-// @route  POST /api/v1/users/login
-// @access  Public
+// @route POST /api/v1/users/login
+// @access Public
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcryptjs');
 const { User } = require('../../models');
@@ -11,18 +11,14 @@ module.exports = asyncHandler(async (req, res) => {
 
   const user = await User.findOne({ where: { email } });
 
+  const userData = {
+    ...user.dataValues,
+    token: generateToken(user.id)
+  };
+  delete userData.password;
+
   if (user && (await bcrypt.compare(password, user.password))) {
-    const { id, name, email, verified } = user;
-    res.status(201).json({
-      message: 'User authenticated',
-      userData: {
-        id,
-        name,
-        email,
-        verified,
-        token: generateToken(id)
-      }
-    });
+    res.status(201).json({ message: 'User authenticated', userData });
   } else {
     res.status(400);
     throw new Error('Invalid credentials');

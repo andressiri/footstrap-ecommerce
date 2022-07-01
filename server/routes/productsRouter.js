@@ -8,6 +8,7 @@ const {
   checkBrand
 } = require('../helpers/validatorChecks');
 const authenticateUser = require('../middleware/authenticateUser');
+const checkAdmin = require('../middleware/checkAdmin');
 const validateRequest = require('../middleware/validateRequest');
 const {
   createProduct,
@@ -19,6 +20,7 @@ const {
 
 productsRouter.post('/',
   authenticateUser,
+  checkAdmin,
   checkName,
   checkDescription,
   checkPrice,
@@ -33,6 +35,7 @@ productsRouter.get('/:id', getProduct);
 
 productsRouter.put('/:id',
   authenticateUser,
+  checkAdmin,
   checkName,
   checkDescription,
   checkPrice,
@@ -41,6 +44,6 @@ productsRouter.put('/:id',
   updateProduct
 );
 
-productsRouter.delete('/:id', authenticateUser, deleteProduct);
+productsRouter.delete('/:id', authenticateUser, checkAdmin, deleteProduct);
 
 module.exports = productsRouter;

@@ -1,6 +1,6 @@
 // @description Handle product creation
 // @route POST /api/v1/brands
-// @access Private
+// @access Private - Admin only
 const asyncHandler = require('express-async-handler');
 const { Brand } = require('../../models');
 const { uploadFile } = require('../../helpers/uploadFile');

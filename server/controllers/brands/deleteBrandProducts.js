@@ -1,6 +1,6 @@
 // @description Handle delete brand products
 // @route DELETE /api/v1/brands/:id/products
-// @access Private
+// @access Private - Admin only
 const asyncHandler = require('express-async-handler');
 const { Product, Brand } = require('../../models');
 

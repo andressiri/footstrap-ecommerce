@@ -1,6 +1,6 @@
-// @description  Email verification with code sent
-// @route  PUT /api/v1/users/verification/:code
-// @access  Public
+// @description Email verification with code sent
+// @route PUT /api/v1/users/verification/:code
+// @access Public
 const asyncHandler = require('express-async-handler');
 const { User } = require('../../models');
 const requestTimeLimiter = require('../../helpers/requestTimeLimiter');

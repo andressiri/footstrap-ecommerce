@@ -1,6 +1,6 @@
-// @description  Handle account delete
-// @route  DELETE /api/v1/users/delete/:id
-// @access  Private
+// @description Handle account delete
+// @route DELETE /api/v1/users/delete/:id
+// @access Private
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcryptjs');
 const { User } = require('../../models');
@@ -10,7 +10,7 @@ module.exports = asyncHandler(async (req, res) => {
   const id = req.params.id;
 
   try {
-    if (id !== req.user.id) {
+    if (id !== req.user.id && req.user.roleId !== 2) {
       res.status(403);
       throw new Error('You can\'t delete that resource');
     };
@@ -20,6 +20,11 @@ module.exports = asyncHandler(async (req, res) => {
       attributes: ['password'],
       where: { id }
     });
+
+    if (user.roleId === 2) {
+      res.status(401);
+      throw new Error('This account can\'t be deleted, contact the administrator');
+    }
 
     if (!await bcrypt.compare(password, user.password)) {
       res.status(401);

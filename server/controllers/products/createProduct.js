@@ -2,7 +2,7 @@
 // @route POST /api/v1/products
 // @access Private - Admin only
 const asyncHandler = require('express-async-handler');
-const { Product, Brand } = require('../../models');
+const { Product, Brand, sequelize } = require('../../models');
 const { uploadFile } = require('../../helpers/uploadFile');
 
 module.exports = asyncHandler(async (req, res) => {
@@ -29,7 +29,13 @@ module.exports = asyncHandler(async (req, res) => {
     price: parsedPrice,
     brandId,
     gender,
-    type
+    type,
+    stock: [{}]
+  }, {
+    include: {
+      model: sequelize.model('Size'),
+      as: 'stock'
+    }
   });
 
   const brand = await Brand.findByPk(brandId, {
@@ -40,6 +46,7 @@ module.exports = asyncHandler(async (req, res) => {
     ...createResult.dataValues,
     brand
   };
+  delete productData.stock;
 
   res.status(201).json({ message: 'Product created', productData });
 });

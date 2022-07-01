@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate (models) {
       Size.belongsTo(models.Product, {
-        foreignKey: 'id',
+        foreignKey: 'productId',
         onDelete: 'CASCADE'
       });
     }

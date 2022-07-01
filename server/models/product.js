@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate (models) {
       Product.hasOne(models.Size, {
-        foreignKey: 'productId',
-        as: 'Sizes'
+        as: 'stock',
+        foreignKey: 'productId'
       });
       Product.belongsTo(models.Brand, {
         as: 'brand',

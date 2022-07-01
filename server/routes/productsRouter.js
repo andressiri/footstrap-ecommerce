@@ -13,7 +13,8 @@ const {
   createProduct,
   getProducts,
   getProduct,
-  updateProduct
+  updateProduct,
+  deleteProduct
 } = require('../controllers/products');
 
 productsRouter.post('/',
@@ -39,5 +40,7 @@ productsRouter.put('/:id',
   validateRequest,
   updateProduct
 );
+
+productsRouter.delete('/:id', authenticateUser, deleteProduct);
 
 module.exports = productsRouter;

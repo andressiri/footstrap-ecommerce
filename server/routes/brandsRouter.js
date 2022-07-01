@@ -9,7 +9,9 @@ const {
   getBrandProducts,
   getBrands,
   getBrand,
-  updateBrand
+  updateBrand,
+  deleteBrand,
+  deleteBrandProducts
 } = require('../controllers/brands');
 
 brandsRouter.post('/',
@@ -31,5 +33,9 @@ brandsRouter.put('/:id',
   validateRequest,
   updateBrand
 );
+
+brandsRouter.delete('/:id', authenticateUser, deleteBrand);
+
+brandsRouter.delete('/:id/products', authenticateUser, deleteBrandProducts);
 
 module.exports = brandsRouter;

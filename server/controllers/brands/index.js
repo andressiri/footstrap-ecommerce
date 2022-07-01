@@ -3,5 +3,7 @@ module.exports = {
   getBrands: require('./getBrands'),
   getBrand: require('./getBrand'),
   getBrandProducts: require('./getBrandProducts'),
-  updateBrand: require('./updateBrand')
+  updateBrand: require('./updateBrand'),
+  deleteBrand: require('./deleteBrand'),
+  deleteBrandProducts: require('./deleteBrandProducts')
 };

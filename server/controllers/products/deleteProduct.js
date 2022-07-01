@@ -21,5 +21,5 @@ module.exports = asyncHandler(async (req, res) => {
     where: { id }
   });
 
-  res.status(200).json({ message: 'Deleted product', id: req.params.id });
+  res.status(200).json({ message: 'Deleted product', id });
 });

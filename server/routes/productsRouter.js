@@ -15,7 +15,10 @@ const {
   getProducts,
   getProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
+  productsStock,
+  productStock,
+  updateStock
 } = require('../controllers/products');
 
 productsRouter.post('/',
@@ -31,9 +34,9 @@ productsRouter.post('/',
 
 productsRouter.get('/', getProducts);
 
-productsRouter.get('/:id', getProduct);
+productsRouter.get('/product/:id', getProduct);
 
-productsRouter.put('/:id',
+productsRouter.put('/product/:id',
   authenticateUser,
   checkAdmin,
   checkName,
@@ -44,6 +47,12 @@ productsRouter.put('/:id',
   updateProduct
 );
 
-productsRouter.delete('/:id', authenticateUser, checkAdmin, deleteProduct);
+productsRouter.delete('/product/:id', authenticateUser, checkAdmin, deleteProduct);
+
+productsRouter.get('/stock', productsStock);
+
+productsRouter.get('/stock/:id', productStock);
+
+productsRouter.put('/stock/:id', authenticateUser, checkAdmin, updateStock);
 
 module.exports = productsRouter;

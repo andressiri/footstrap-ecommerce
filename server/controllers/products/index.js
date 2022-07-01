@@ -3,5 +3,8 @@ module.exports = {
   getProducts: require('./getProducts'),
   getProduct: require('./getProduct'),
   updateProduct: require('./updateProduct'),
-  deleteProduct: require('./deleteProduct')
+  deleteProduct: require('./deleteProduct'),
+  productsStock: require('./productsStock'),
+  productStock: require('./productStock'),
+  updateStock: require('./updateStock')
 };

@@ -16,52 +16,52 @@ module.exports = {
         references: {
           model: 'Products',
           key: 'id',
-          as: 'productId'
+          as: 'product'
         }
       },
-      35: {
+      s35: {
         type: Sequelize.INTEGER
       },
-      36: {
+      s36: {
         type: Sequelize.INTEGER
       },
-      37: {
+      s37: {
         type: Sequelize.INTEGER
       },
-      38: {
+      s38: {
         type: Sequelize.INTEGER
       },
-      39: {
+      s39: {
         type: Sequelize.INTEGER
       },
-      40: {
+      s40: {
         type: Sequelize.INTEGER
       },
-      41: {
+      s41: {
         type: Sequelize.INTEGER
       },
-      42: {
+      s42: {
         type: Sequelize.INTEGER
       },
-      43: {
+      s43: {
         type: Sequelize.INTEGER
       },
-      44: {
+      s44: {
         type: Sequelize.INTEGER
       },
-      45: {
+      s45: {
         type: Sequelize.INTEGER
       },
-      46: {
+      s46: {
         type: Sequelize.INTEGER
       },
-      48: {
+      s48: {
         type: Sequelize.INTEGER
       },
-      50: {
+      s50: {
         type: Sequelize.INTEGER
       },
-      52: {
+      s52: {
         type: Sequelize.INTEGER
       },
       createdAt: {

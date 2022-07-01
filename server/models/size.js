@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate (models) {
       Size.belongsTo(models.Product, {
+        as: 'product',
         foreignKey: 'productId',
         onDelete: 'CASCADE'
       });
@@ -24,21 +25,21 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4
     },
     productId: DataTypes.UUID,
-    35: DataTypes.INTEGER,
-    36: DataTypes.INTEGER,
-    37: DataTypes.INTEGER,
-    38: DataTypes.INTEGER,
-    39: DataTypes.INTEGER,
-    40: DataTypes.INTEGER,
-    41: DataTypes.INTEGER,
-    42: DataTypes.INTEGER,
-    43: DataTypes.INTEGER,
-    44: DataTypes.INTEGER,
-    45: DataTypes.INTEGER,
-    46: DataTypes.INTEGER,
-    48: DataTypes.INTEGER,
-    50: DataTypes.INTEGER,
-    52: DataTypes.INTEGER
+    s35: DataTypes.INTEGER,
+    s36: DataTypes.INTEGER,
+    s37: DataTypes.INTEGER,
+    s38: DataTypes.INTEGER,
+    s39: DataTypes.INTEGER,
+    s40: DataTypes.INTEGER,
+    s41: DataTypes.INTEGER,
+    s42: DataTypes.INTEGER,
+    s43: DataTypes.INTEGER,
+    s44: DataTypes.INTEGER,
+    s45: DataTypes.INTEGER,
+    s46: DataTypes.INTEGER,
+    s48: DataTypes.INTEGER,
+    s50: DataTypes.INTEGER,
+    s52: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Size'

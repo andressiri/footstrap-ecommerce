@@ -13,5 +13,10 @@ module.exports = asyncHandler(async (req, res) => {
     }
   }, { raw: true });
 
+  if (!products[0]) {
+    res.status(404);
+    throw new Error('There are no products');
+  }
+
   res.status(200).json(products);
 });

@@ -11,7 +11,7 @@ module.exports = asyncHandler(async (req, res) => {
 
   if (!brandFound) {
     res.status(404);
-    throw new Error('That brand does not exist');
+    throw new Error('That brand doesn\'t exist');
   }
 
   const deleteResult = await Product.destroy({

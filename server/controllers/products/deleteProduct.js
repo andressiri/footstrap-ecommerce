@@ -14,7 +14,7 @@ module.exports = asyncHandler(async (req, res) => {
 
   if (!product) {
     res.status(404);
-    throw new Error('That product does not exist');
+    throw new Error('That product doesn\'t exist');
   };
 
   await Product.destroy({

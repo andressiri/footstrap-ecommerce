@@ -10,5 +10,5 @@ module.exports = asyncHandler(async (req, res) => {
     attributes: { exclude: ['password'] }
   });
 
-  res.json({ message: 'Users data obtained', usersData });
+  res.json({ usersData });
 });

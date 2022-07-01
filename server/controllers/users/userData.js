@@ -17,5 +17,5 @@ module.exports = asyncHandler(async (req, res) => {
     token: generateToken(userData.id)
   };
 
-  res.json({ message: 'User data obtained', userData });
+  res.json({ userData });
 });

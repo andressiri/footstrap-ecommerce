@@ -9,5 +9,10 @@ module.exports = asyncHandler(async (req, res) => {
 
   const brandData = await Brand.findByPk(id);
 
+  if (!brandData) {
+    res.status(404);
+    throw new Error('That brand doesn\'t exist');
+  }
+
   res.status(200).json(brandData);
 });

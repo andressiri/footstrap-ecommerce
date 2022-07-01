@@ -1,6 +1,10 @@
 import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
+import Dashboard from './pages/Dashboard';
+import NotFound from './pages/NotFound';
+import Register from './pages/Register';
+import Login from './pages/Login';
 
 const theme = createTheme({
   palette: {
@@ -23,7 +27,13 @@ const theme = createTheme({
 function App () {
   return (
     <ThemeProvider theme={theme} >
-      <Typography variant='h2' >Hello Footstrap!</Typography>
+      <Routes>
+        <Route path='/' element={<Dashboard />} />
+        <Route path='/not-found' element={<NotFound />} />
+        <Route path='*' element={<Navigate to='/not-found' />} />z
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
     </ThemeProvider>
   );
 }

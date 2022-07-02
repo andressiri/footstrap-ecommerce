@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Navbar from './components/Navbar';
 
 function App () {
   const location = useLocation();
@@ -37,6 +38,7 @@ function App () {
 
   return (
     <ThemeProvider theme={theme} >
+      <Navbar />
       {transitions((props, item) => {
         return <animated.div style={props}>
           <Routes location={item}>

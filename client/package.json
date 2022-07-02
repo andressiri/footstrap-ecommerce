@@ -1,7 +1,7 @@
 {
   "name": "footstrap-client",
   "version": "0.1.0",
-  "proxy": "http://localhost:8080",
+  "proxy": "http://localhost:8080/api/v1",
   "private": true,
   "dependencies": {
     "@emotion/react": "~11.9.3",
@@ -11,6 +11,7 @@
     "@reduxjs/toolkit": "~1.8.3",
     "axios": "~0.27.2",
     "cross-env": "~7.0.3",
+    "formik": "~2.2.9",
     "material-react-toastify": "~1.0.1",
     "react": "~18.2.0",
     "react-beforeunload": "~2.5.3",
@@ -19,7 +20,8 @@
     "react-router-dom": "~6.3.0",
     "react-scripts": "5.0.1",
     "react-spring": "~9.4.5",
-    "web-vitals": "~2.1.4"
+    "web-vitals": "~2.1.4",
+    "yup": "~0.32.11"
   },
   "scripts": {
     "start": "cross-env DISABLE_ESLINT_PLUGIN=true react-scripts start",

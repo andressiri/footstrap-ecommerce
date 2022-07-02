@@ -83,9 +83,9 @@ export const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.user = action.payload;
-        localStorage.setItem('user', JSON.stringify(action.payload));
-        sessionStorage.setItem('user', JSON.stringify(action.payload));
+        state.user = action.payload.userData;
+        localStorage.setItem('user', JSON.stringify(action.payload.userData));
+        sessionStorage.setItem('user', JSON.stringify(action.payload.userData));
       })
       .addCase(register.rejected, (state, action) => {
         state.isLoading = false;
@@ -99,9 +99,9 @@ export const authSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.user = action.payload;
-        localStorage.setItem('user', JSON.stringify(action.payload));
-        sessionStorage.setItem('user', JSON.stringify(action.payload));
+        state.user = action.payload.userData;
+        localStorage.setItem('user', JSON.stringify(action.payload.userData));
+        sessionStorage.setItem('user', JSON.stringify(action.payload.userData));
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;

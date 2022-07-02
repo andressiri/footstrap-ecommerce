@@ -4,6 +4,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useTransition, animated } from 'react-spring';
 import { useBeforeunload } from 'react-beforeunload';
 import { useSelector } from 'react-redux';
+import { ToastContainer } from 'material-react-toastify';
+import 'material-react-toastify/dist/ReactToastify.css';
 import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
 import Register from './pages/Register';
@@ -50,6 +52,7 @@ function App () {
     <ThemeProvider theme={theme} >
       <Navbar />
       <NavigationDrawer />
+      <ToastContainer />
       {transitions((props, item) => {
         return <animated.div style={props}>
           <Routes location={item}>

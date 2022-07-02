@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { changeDrawer } from '../features/muiComponents/muiComponentsSlice';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -9,12 +11,15 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 function Navbar () {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleGoToDashboard = () => navigate('/');
 
   const handleGoToLogin = () => navigate('/login');
 
   const handleGoToRegister = () => navigate('/register');
+
+  const handleChangeDrawer = () => dispatch(changeDrawer());
 
   // <PaidIcon fontSize="large" color="secondary" />
 
@@ -60,8 +65,8 @@ function Navbar () {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
-          >
-            <MenuIcon />
+            onClick={handleChangeDrawer}
+          ><MenuIcon />
           </IconButton>
 
         </Toolbar>

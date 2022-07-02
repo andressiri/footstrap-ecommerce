@@ -2,6 +2,8 @@ import React from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useTransition, animated } from 'react-spring';
+import { useBeforeunload } from 'react-beforeunload';
+import { useSelector } from 'react-redux';
 import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
 import Register from './pages/Register';
@@ -10,6 +12,7 @@ import Navbar from './components/Navbar';
 import NavigationDrawer from './components/NavigationDrawer';
 
 function App () {
+  const { remember } = useSelector((state) => state.auth);
   const location = useLocation();
 
   const theme = createTheme({
@@ -35,6 +38,12 @@ function App () {
     enter: { opacity: 1, duration: 200 },
     leave: { opacity: 0 },
     exitBeforeEnter: true
+  });
+
+  useBeforeunload(() => {
+    if (remember) return;
+
+    localStorage.removeItem('user');
   });
 
   return (

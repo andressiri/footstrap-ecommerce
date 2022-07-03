@@ -1,59 +1,46 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import useLogout from '../helpers/useLogout';
 import { toast } from 'material-react-toastify';
-import { resetAuthReq, resetToken } from '../features/auth/authSlice';
+import { resetAuthReq } from '../features/auth/authSlice';
 import Spinner from '../components/Spinner';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
+import CssBaseline from '@mui/material/CssBaseline';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
-import LockOpenIcon from '@mui/icons-material/LockOpen';
-import ChangePasswordFormik from '../components/ChangePasswordFormik';
+import FaceIcon from '@mui/icons-material/Face';
+import ChangeNameFormik from '../components/ChangeNameFormik';
 
-function ChangePassword () {
-  const {
-    user,
-    isLoading,
-    isError,
-    isSuccess,
-    message,
-    temporaryToken
-  } = useSelector((state) => state.auth);
+function ChangeName () {
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const logout = useLogout();
 
   useEffect(() => {
     if (isError) toast.error(message);
 
     if (isSuccess) {
       toast.success(message);
-      logout();
-      navigate('/login');
+      navigate('/');
     };
 
-    if (!temporaryToken) navigate('/');
+    if (!user) navigate('/');
 
     dispatch(resetAuthReq());
-  }, [isError, isSuccess, message, temporaryToken, navigate, dispatch, logout]);
+  }, [isError, isSuccess, message, user, navigate, dispatch]);
 
-  const handleGoToLogin = () => {
-    if (!user) {
-      logout();
-    } else {
-      dispatch(resetToken());
-      navigate('/login');
-    };
-  };
+  const handleCancel = () => navigate('/login');
 
-  if (!temporaryToken) return (<></>);
+  if (!user) return (<></>);
 
   return (
     <Container component="main" maxWidth="xs">
       {isLoading && <Spinner />}
+      <CssBaseline />
       <Box sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -66,13 +53,13 @@ function ChangePassword () {
         borderStyle: 'solid'
       }} >
         <Avatar sx={{ mb: 1, mt: { xs: 0, sm: -2 }, bgcolor: 'secondary.main' }}>
-          <LockOpenIcon />
+          <FaceIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Change password
+          Change name
         </Typography>
-        <ChangePasswordFormik />
-        <Link onClick={handleGoToLogin} variant="body2" sx={{ cursor: 'pointer' }} >
+        <ChangeNameFormik />
+        <Link onClick={handleCancel} variant="body2" sx={{ cursor: 'pointer' }} >
           Cancel
         </Link>
       </Box>
@@ -80,4 +67,4 @@ function ChangePassword () {
   );
 };
 
-export default ChangePassword;
+export default ChangeName;

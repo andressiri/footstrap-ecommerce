@@ -14,6 +14,7 @@ import Navbar from './components/Navbar';
 import NavigationDrawer from './components/NavigationDrawer';
 import Verification from './pages/Verification';
 import ChangePassword from './pages/ChangePassword';
+import ChangeName from './pages/ChangeName';
 
 function App () {
   const { remember } = useSelector((state) => state.auth);
@@ -71,6 +72,7 @@ function App () {
               <Route path='/login' element={<Login />} />
               <Route path='/verification' element={<Verification />} />
               <Route path='/password' element={<ChangePassword />} />
+              <Route path='/name' element={<ChangeName />} />
             </Routes>
           </animated.div>;
         })}

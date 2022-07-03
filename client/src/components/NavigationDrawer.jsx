@@ -10,6 +10,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import Typography from '@mui/material/Typography';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FaceIcon from '@mui/icons-material/Face';
 import LoginIcon from '@mui/icons-material/Login';
@@ -89,6 +90,9 @@ function NavigationDrawer () {
     >
       <Box
         sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
           width: 250,
           backgroundColor: 'primary.main',
           height: '100vh',
@@ -100,6 +104,13 @@ function NavigationDrawer () {
         onClick={toggleDrawer()}
         onKeyDown={toggleDrawer()}
       >
+        {user &&
+          <Typography
+          variant="h6"
+          sx={{ color: 'warning.light', mt: 3 }}
+          >{user.name}
+          </Typography>
+        }
         <List>
           {arrayToDisplay.map((obj) => (
             <ListItem button onClick={obj.onClick} key={obj.text} >

@@ -111,6 +111,18 @@ export const changePassword = createAsyncThunk('auth/changePassword',
   }
 );
 
+// Change user name
+export const changeName = createAsyncThunk('auth/changeName',
+  async (values, thunkAPI) => {
+    try {
+      return await axiosInstance(`/users/name/${values.name}`, {}, 'PUT');
+    } catch (error) {
+      const message = getErrorMessage(error);
+      return thunkAPI.rejectWithValue(message);
+    };
+  }
+);
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -230,7 +242,7 @@ export const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
-    // Change password
+      // Change password
       .addCase(changePassword.pending, (state) => {
         state.isLoading = true;
       })
@@ -240,6 +252,23 @@ export const authSlice = createSlice({
         state.message = action.payload.message;
       })
       .addCase(changePassword.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      // Change Name
+      .addCase(changeName.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(changeName.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = action.payload.userData;
+        localStorage.setItem('user', JSON.stringify(action.payload.userData));
+        sessionStorage.setItem('user', JSON.stringify(action.payload.userData));
+        state.message = action.payload.message;
+      })
+      .addCase(changeName.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

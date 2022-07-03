@@ -11,7 +11,7 @@ function RegisterFormik () {
     name: '',
     email: '',
     password: '',
-    password2: ''
+    confirmPassword: ''
   };
   const dispatch = useDispatch();
 
@@ -71,15 +71,15 @@ function RegisterFormik () {
          margin="normal"
          required
          fullWidth
-         name="password2"
+         name="confirmPassword"
          label="Confirm password"
          type="password"
-         id="password2"
+         id="confirmPassword"
          autoComplete="current-password"
-         value={formik.values.password2}
+         value={formik.values.confirmPassword}
          onChange={formik.handleChange}
-         error={formik.touched.password2 && Boolean(formik.errors.password2)}
-         helperText={formik.touched.password2 && formik.errors.password2}
+         error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
+         helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
        />
       <Button
         type="submit"

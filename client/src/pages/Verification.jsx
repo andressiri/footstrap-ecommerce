@@ -101,7 +101,7 @@ function Verification () {
         <SendCodeFormik />
         <CheckCodeFormik />
         {!user &&
-          <Link href='#' onClick={handleGoToLogin} variant="body2" sx={{ mt: 2 }} >
+          <Link onClick={handleGoToLogin} variant="body2" sx={{ mt: 2, cursor: 'pointer' }} >
             Remebered? Cancel
           </Link>
         }

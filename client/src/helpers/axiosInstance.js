@@ -3,7 +3,8 @@ const { v4: UUIDV4 } = require('uuid');
 
 export const axiosInstance = async (endpoint, data = {}, method = 'GET') => {
   const user = JSON.parse(localStorage.getItem('user'));
-  const token = user ? user.token : '';
+  const temporaryToken = JSON.parse(sessionStorage.getItem('temporaryToken'));
+  const token = user ? user.token : temporaryToken || '';
   const storageFile = localStorage.getItem('file');
   let contentType = 'application/json';
   let formData = data;

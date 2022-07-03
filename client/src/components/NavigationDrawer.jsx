@@ -5,18 +5,20 @@ import { changeDrawer, changeDeleteAccount } from '../features/muiComponents/mui
 import { requirePasswordChange } from '../features/auth/authSlice';
 import useLogout from '../helpers/useLogout';
 import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AddBusinessIcon from '@mui/icons-material/AddBusiness';
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import BorderColorIcon from '@mui/icons-material/BorderColor';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import FaceIcon from '@mui/icons-material/Face';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import NoAccountsIcon from '@mui/icons-material/NoAccounts';
 import PasswordIcon from '@mui/icons-material/Password';
+import NavigationDrawerList from './NavigationDrawerList';
 
 function NavigationDrawer () {
   const { user } = useSelector((state) => state.auth);
@@ -50,6 +52,15 @@ function NavigationDrawer () {
 
   const handleDeleteAccount = () => dispatch(changeDeleteAccount());
 
+  const handleCreateProduct = () => navigate('/products/create');
+
+  const handleUpdateProduct = () => navigate('/products/update');
+
+  const handleDeleteProduct = () => navigate('/products/delete');
+
+  const handleUpdateStock = () => navigate('/products/stock');
+
+  let adminArray = [];
   let arrayToDisplay = [{
     text: 'Change name',
     icon: <FaceIcon />,
@@ -66,8 +77,7 @@ function NavigationDrawer () {
     text: 'Delete account',
     icon: <NoAccountsIcon />,
     onClick: handleDeleteAccount
-  }
-  ];
+  }];
 
   if (!user) {
     arrayToDisplay = [{
@@ -78,6 +88,27 @@ function NavigationDrawer () {
       text: 'Login',
       icon: <LoginIcon />,
       onClick: handleLogin
+    }];
+  }
+
+  if (user?.roleId === 2) {
+    arrayToDisplay.pop();
+    adminArray = [{
+      text: 'Create product',
+      icon: <AddBusinessIcon />,
+      onClick: handleCreateProduct
+    }, {
+      text: 'Update product',
+      icon: <BorderColorIcon />,
+      onClick: handleUpdateProduct
+    }, {
+      text: 'Delete product',
+      icon: <DeleteForeverIcon />,
+      onClick: handleDeleteProduct
+    }, {
+      text: 'Update stock',
+      icon: <AddTaskIcon />,
+      onClick: handleUpdateStock
     }
     ];
   }
@@ -111,16 +142,20 @@ function NavigationDrawer () {
           >{user.name}
           </Typography>
         }
-        <List>
-          {arrayToDisplay.map((obj) => (
-            <ListItem button onClick={obj.onClick} key={obj.text} >
-              <ListItemIcon sx={{ color: 'white' }}>
-                {obj.icon}
-              </ListItemIcon>
-              <ListItemText primary={obj.text} sx={{ color: 'white' }} />
-            </ListItem>
-          ))}
-        </List>
+        <NavigationDrawerList fromParent={{ array: arrayToDisplay }} />
+        {user?.roleId === 2 &&
+          <>
+            <Divider sx={{
+              width: '220px',
+              borderColor: 'warning.light',
+              borderStyle: 'solid',
+              borderWidth: '1px',
+              borderRadius: '50%'
+            }} />
+            <NavigationDrawerList fromParent={{ array: adminArray }} />
+          </>
+
+        }
       </Box>
     </Drawer>
   );

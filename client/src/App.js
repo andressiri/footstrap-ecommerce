@@ -18,6 +18,8 @@ import NavigationDrawer from './components/NavigationDrawer';
 import Verification from './pages/Verification';
 import ChangePassword from './pages/ChangePassword';
 import ChangeName from './pages/ChangeName';
+import Footer from './components/Footer';
+import { CssBaseline } from '@mui/material';
 
 function App () {
   const { remember } = useSelector((state) => state.auth);
@@ -64,11 +66,20 @@ function App () {
       <div style={{
         background: 'linear-gradient(300deg, rgb(224, 45, 126), rgb(152, 115, 231)) 0% 0% / 120% 120%',
         width: '100%',
-        minHeight: '100vh',
-        paddingTop: '110px'
+        minHeight: '100vh'
       }} >
         {transitions((props, item) => {
-          return <animated.div style={props}>
+          return <animated.div style={{
+            ...props,
+            background: 'linear-gradient(300deg, rgb(224, 45, 126), rgb(152, 115, 231)) 0% 0% / 120% 120%',
+            width: '100%',
+            minHeight: '100vh',
+            paddingTop: '110px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between'
+          }}>
+            <CssBaseline />
             <Routes location={item}>
               <Route path='/' element={<Dashboard />} />
               <Route path='/not-found' element={<NotFound />} />
@@ -80,6 +91,7 @@ function App () {
               <Route path='/name' element={<ChangeName />} />
               <Route path='/delete-account' element={<PasswordToDelete />} />
             </Routes>
+            <Footer />
           </animated.div>;
         })}
       </div>

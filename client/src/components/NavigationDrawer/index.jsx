@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeDrawer, changeDeleteAccount } from '../features/muiComponents/muiComponentsSlice';
-import { requirePasswordChange } from '../features/auth/authSlice';
-import useLogout from '../helpers/useLogout';
+import { changeDrawer, changeDeleteAccount } from '../../features/muiComponents/muiComponentsSlice';
+import { requirePasswordChange } from '../../features/auth/authSlice';
+import useLogout from '../../helpers/useLogout';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';

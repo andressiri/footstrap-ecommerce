@@ -8,7 +8,6 @@ import Spinner from '../components/Spinner';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import CssBaseline from '@mui/material/CssBaseline';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import MailLockIcon from '@mui/icons-material/MailLock';
@@ -78,7 +77,6 @@ function Verification () {
   return (
     <Container component="main" maxWidth="xs">
       {isLoading && <Spinner />}
-      <CssBaseline />
       <Box
         sx={{
           display: 'flex',

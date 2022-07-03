@@ -19,6 +19,8 @@ function Navbar () {
 
   const handleGoToDashboard = () => navigate('/');
 
+  const handleGoToProducts = () => navigate('/products');
+
   const handleGoToLogin = () => navigate('/login');
 
   const handleGoToRegister = () => navigate('/register');
@@ -55,12 +57,13 @@ function Navbar () {
             </IconButton>
             <Button
               onClick={handleGoToDashboard}
-              color="inherit"
-              sx={{ fontSize: '1.5rem', display: { xs: 'none', sm: 'flex' } }}
+              sx={{ color: 'black', fontSize: '1.5rem', display: { xs: 'none', sm: 'flex' } }}
               >Footstrap
             </Button>
-
           </Box>
+          <Button onClick={handleGoToProducts} sx={{ color: 'warning.light' }}>
+            Products
+          </Button>
           {user
             ? <Button onClick={handleLogout} color="inherit">
               Logout

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'material-react-toastify';
 import { resetAuthReq, changeVerificationStatus } from '../features/auth/authSlice';
-// import { changeDelAccConfirm } from '../features/muiComponents/muiComponentsSlice'; TODO
+import { changeDelAccConfirm } from '../features/muiComponents/muiComponentsSlice';
 import Spinner from '../components/Spinner';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
@@ -42,7 +42,7 @@ function Verification () {
         if (passwordChangeRequired) {
           navigate('/password');
         } else if (accountDeleteRequired) {
-          // dispatch(changeDelAccConfirm()); TODO
+          dispatch(changeDelAccConfirm());
         } else {
           dispatch(changeVerificationStatus());
           navigate('/');

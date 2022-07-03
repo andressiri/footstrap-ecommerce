@@ -123,6 +123,19 @@ export const changeName = createAsyncThunk('auth/changeName',
   }
 );
 
+// Delete Account
+export const deleteAccount = createAsyncThunk('auth/deleteAccount',
+  async (obj, thunkAPI) => {
+    try {
+      const data = await axiosInstance(`/users/delete/${obj.user.id}`, { password: obj.password }, 'DELETE'); ;
+      return thunkAPI.fulfillWithValue(data.message);
+    } catch (error) {
+      const message = getErrorMessage(error);
+      return thunkAPI.rejectWithValue(message);
+    };
+  }
+);
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -233,7 +246,7 @@ export const authSlice = createSlice({
         state.message = action.payload.message;
         state.temporaryToken = action.payload.token;
         sessionStorage.setItem('temporaryToken', JSON.stringify(action.payload.token));
-        if (state.user) state.user = { ...user, verified: true };
+        if (state.user) state.user = { ...state.user, verified: true };
         state.isSuccess = true;
         state.codeSent = false;
       })
@@ -269,6 +282,20 @@ export const authSlice = createSlice({
         state.message = action.payload.message;
       })
       .addCase(changeName.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      // Delete account
+      .addCase(deleteAccount.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteAccount.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = action.payload;
+      })
+      .addCase(deleteAccount.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

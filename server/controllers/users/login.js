@@ -11,6 +11,11 @@ module.exports = asyncHandler(async (req, res) => {
 
   const user = await User.findOne({ where: { email } });
 
+  if (!user) {
+    res.status(404);
+    throw new Error('No user registered with that email');
+  };
+
   const userData = {
     ...user.dataValues,
     token: generateToken(user.id)

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeDrawer } from '../features/muiComponents/muiComponentsSlice';
+import { changeDrawer, changeDeleteAccount } from '../features/muiComponents/muiComponentsSlice';
 import { requirePasswordChange } from '../features/auth/authSlice';
 import useLogout from '../helpers/useLogout';
 import Box from '@mui/material/Box';
@@ -48,7 +48,7 @@ function NavigationDrawer () {
 
   const handleLogout = () => logout();
 
-  const handleDeleteAccount = () => {}; // TODO
+  const handleDeleteAccount = () => dispatch(changeDeleteAccount());
 
   let arrayToDisplay = [{
     text: 'Change name',

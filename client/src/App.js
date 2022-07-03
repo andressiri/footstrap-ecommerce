@@ -6,6 +6,9 @@ import { useBeforeunload } from 'react-beforeunload';
 import { useSelector } from 'react-redux';
 import { ToastContainer } from 'material-react-toastify';
 import 'material-react-toastify/dist/ReactToastify.css';
+import DelAccConfirm from './components/deleteAccount/DelAccConfirm';
+import DeleteAccount from './components/deleteAccount/DeleteAccount';
+import PasswordToDelete from './components/deleteAccount/PasswordToDelete';
 import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
 import Register from './pages/Register';
@@ -56,6 +59,8 @@ function App () {
       <Navbar />
       <NavigationDrawer />
       <ToastContainer />
+      <DeleteAccount />
+      <DelAccConfirm />
       <div style={{
         background: 'linear-gradient(300deg, rgb(224, 45, 126), rgb(152, 115, 231)) 0% 0% / 120% 120%',
         width: '100%',
@@ -73,6 +78,7 @@ function App () {
               <Route path='/verification' element={<Verification />} />
               <Route path='/password' element={<ChangePassword />} />
               <Route path='/name' element={<ChangeName />} />
+              <Route path='/delete-account' element={<PasswordToDelete />} />
             </Routes>
           </animated.div>;
         })}

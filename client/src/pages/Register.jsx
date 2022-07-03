@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { resetAuthReq } from '../features/auth/authSlice';
+import { resetAuthReq, requireVerification } from '../features/auth/authSlice';
 import { toast } from 'material-react-toastify';
 import RegisterFormik from '../components/RegisterFormik';
 import Spinner from '../components/Spinner';
@@ -29,7 +29,7 @@ function Register () {
       if (user?.verified) {
         navigate('/');
       } else {
-        // dispatch(requireVerification()); TODO
+        dispatch(requireVerification());
         navigate('/verification');
       };
     };
@@ -47,20 +47,25 @@ function Register () {
       <CssBaseline />
       <Box
         sx={{
-          marginTop: 8,
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center'
+          alignItems: 'center',
+          background: 'white',
+          p: { xs: 2, sm: 7 },
+          borderRadius: 2,
+          borderWidth: '3px',
+          borderColor: 'warning.light',
+          borderStyle: 'solid'
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+        <Avatar sx={{ mb: 1, mt: { xs: 0, sm: -2 }, bgcolor: 'secondary.main' }}>
           <AccountCircleIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
           Register
         </Typography>
         <RegisterFormik />
-        <Link onClick={handleGoToLogin} variant="body2">
+        <Link onClick={handleGoToLogin} variant="body2" sx={{ cursor: 'pointer' }} >
           Already registered? Go to login
         </Link>
       </Box>

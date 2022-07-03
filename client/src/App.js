@@ -12,6 +12,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import NavigationDrawer from './components/NavigationDrawer';
+import Verification from './pages/Verification';
 
 function App () {
   const { remember } = useSelector((state) => state.auth);
@@ -53,17 +54,25 @@ function App () {
       <Navbar />
       <NavigationDrawer />
       <ToastContainer />
-      {transitions((props, item) => {
-        return <animated.div style={props}>
-          <Routes location={item}>
-            <Route path='/' element={<Dashboard />} />
-            <Route path='/not-found' element={<NotFound />} />
-            <Route path='*' element={<Navigate to='/not-found' />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/login' element={<Login />} />
-          </Routes>
-        </animated.div>;
-      })}
+      <div style={{
+        background: 'linear-gradient(300deg, rgb(224, 45, 126), rgb(152, 115, 231)) 0% 0% / 120% 120%',
+        width: '100%',
+        minHeight: '100vh',
+        paddingTop: '110px'
+      }} >
+        {transitions((props, item) => {
+          return <animated.div style={props}>
+            <Routes location={item}>
+              <Route path='/' element={<Dashboard />} />
+              <Route path='/not-found' element={<NotFound />} />
+              <Route path='*' element={<Navigate to='/not-found' />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/verification' element={<Verification />} />
+            </Routes>
+          </animated.div>;
+        })}
+      </div>
     </ThemeProvider>
   );
 }

@@ -57,7 +57,7 @@ function LoginFormik () {
       />
       <FormControlLabel
         control={<Checkbox
-          color="primary"
+          color="secondary"
           checked={formik.values.remember}
           onChange={() => formik.setFieldValue('remember', !formik.values.remember)}
           />}

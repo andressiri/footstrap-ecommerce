@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeDrawer } from '../features/muiComponents/muiComponentsSlice';
+import { requirePasswordChange } from '../features/auth/authSlice';
 import useLogout from '../helpers/useLogout';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -40,7 +41,7 @@ function NavigationDrawer () {
   const handleChangeName = () => navigate('/name');
 
   const handleChangePassword = () => {
-    // dispatch(requirePasswordChange()); TODO
+    dispatch(requirePasswordChange());
     navigate('/verification');
   };
 
@@ -87,18 +88,25 @@ function NavigationDrawer () {
       onClose={toggleDrawer()}
     >
       <Box
-        sx={{ width: 250 }}
+        sx={{
+          width: 250,
+          backgroundColor: 'primary.main',
+          height: '100vh',
+          borderLeftColor: 'warning.light',
+          borderLeftWidth: '2px',
+          borderLeftStyle: 'solid'
+        }}
         role="presentation"
         onClick={toggleDrawer()}
         onKeyDown={toggleDrawer()}
       >
         <List>
           {arrayToDisplay.map((obj) => (
-            <ListItem button onClick={obj.onClick} key={obj.text}>
-              <ListItemIcon>
+            <ListItem button onClick={obj.onClick} key={obj.text} >
+              <ListItemIcon sx={{ color: 'white' }}>
                 {obj.icon}
               </ListItemIcon>
-              <ListItemText primary={obj.text} />
+              <ListItemText primary={obj.text} sx={{ color: 'white' }} />
             </ListItem>
           ))}
         </List>

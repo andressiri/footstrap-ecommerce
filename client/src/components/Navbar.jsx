@@ -29,16 +29,20 @@ function Navbar () {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="fixed" sx={{
+        flexGrow: 1,
+        borderBottomStyle: 'solid',
+        borderBottomColor: 'warning.light',
+        borderBottomWidth: '2px'
+      }}>
         <Toolbar>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-start'
-            }}
-          >
+          <Box sx={{
+            minHeight: '64px',
+            flexGrow: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-start'
+          }} >
             <IconButton
               size="large"
               edge="start"
@@ -78,7 +82,6 @@ function Navbar () {
             onClick={handleChangeDrawer}
           ><MenuIcon />
           </IconButton>
-
         </Toolbar>
       </AppBar>
     </Box>

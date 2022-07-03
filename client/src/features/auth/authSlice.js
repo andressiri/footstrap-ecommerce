@@ -23,7 +23,20 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
-  message: ''
+  message: '',
+  temporaryToken: null,
+  userVerificationRequired: false,
+  passwordChangeRequired: false,
+  accountDeleteRequired: false,
+  codeSent: false
+};
+
+const getErrorMessage = (error) => {
+  const message =
+    (error.response && error.response.data && error.response.data.message) ||
+     error.message ||
+     error.toString();
+  return message;
 };
 
 // Register user
@@ -33,10 +46,7 @@ export const register = createAsyncThunk(
     try {
       return await axiosInstance('/users/register', user, 'POST');
     } catch (error) {
-      const message =
-        (error.response && error.response.data && error.response.data.message) ||
-        error.message ||
-        error.toString();
+      const message = getErrorMessage(error);
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -49,10 +59,7 @@ export const login = createAsyncThunk(
     try {
       return await axiosInstance('/users/login', user, 'POST');
     } catch (error) {
-      const message =
-        (error.response && error.response.data && error.response.data.message) ||
-        error.message ||
-        error.toString();
+      const message = getErrorMessage(error);
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -63,6 +70,32 @@ export const logout = createAsyncThunk(
   'auth/logout',
   async (thunkAPI) => {
     await axiosInstance('/users/logout', {}, 'DELETE'); ;
+  }
+);
+
+// Send verification code
+export const sendCode = createAsyncThunk('auth/sendCode',
+  async (obj, thunkAPI) => {
+    try {
+      let endpoint = 'verification';
+      if (!obj.user) endpoint = 'forgot-password';
+      return await axiosInstance(`/users/${endpoint}`, obj.values, 'POST');
+    } catch (error) {
+      const message = getErrorMessage(error);
+      return thunkAPI.rejectWithValue(message);
+    };
+  }
+);
+
+// Check verification code
+export const checkCode = createAsyncThunk('auth/checkCode',
+  async (values, thunkAPI) => {
+    try {
+      return await axiosInstance(`/users/verification/${values.code}`, {}, 'PUT');
+    } catch (error) {
+      const message = getErrorMessage(error);
+      return thunkAPI.rejectWithValue(message);
+    };
   }
 );
 
@@ -81,6 +114,30 @@ export const authSlice = createSlice({
       state.remember = true;
       localStorage.setItem('remember', true);
       sessionStorage.setItem('remember', true);
+    },
+    resetToken: (state) => {
+      state.temporaryToken = null;
+    },
+    requireVerification: (state) => {
+      state.passwordChangeRequired = false;
+      state.accountDeleteRequired = false;
+      state.userVerificationRequired = true;
+    },
+    changeVerificationStatus: (state) => {
+      state.user = {
+        ...user,
+        verified: true
+      };
+    },
+    requirePasswordChange: (state) => {
+      state.userVerificationRequired = false;
+      state.accountDeleteRequired = false;
+      state.passwordChangeRequired = true;
+    },
+    requireAccountDelete: (state) => {
+      state.userVerificationRequired = false;
+      state.passwordChangeRequired = false;
+      state.accountDeleteRequired = true;
     }
   },
   extraReducers: (builder) => {
@@ -125,9 +182,50 @@ export const authSlice = createSlice({
         sessionStorage.removeItem('user');
         localStorage.removeItem('remember');
         sessionStorage.removeItem('remember');
+      })
+      // Send verification code
+      .addCase(sendCode.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(sendCode.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = action.payload.message;
+        state.codeSent = true;
+      })
+      .addCase(sendCode.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      // Check verification code
+      .addCase(checkCode.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(checkCode.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.message = action.payload.message;
+        state.temporaryToken = action.payload.token;
+        if (state.user) state.user = { ...user, verified: true };
+        state.isSuccess = true;
+        state.codeSent = false;
+      })
+      .addCase(checkCode.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       });
   }
 });
 
-export const { resetAuth, resetAuthReq, setRemember } = authSlice.actions;
+export const {
+  resetAuth,
+  resetAuthReq,
+  setRemember,
+  resetToken,
+  requireVerification,
+  changeVerificationStatus,
+  requirePasswordChange,
+  requireAccountDelete
+} = authSlice.actions;
 export default authSlice.reducer;

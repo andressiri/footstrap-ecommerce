@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetAuthReq } from '../features/auth/authSlice';
 import { toast } from 'material-react-toastify';
-import RegisterFormik from '../components/Register/RegisterFormik';
+import RegisterFormik from '../components/RegisterFormik';
 import Spinner from '../components/Spinner';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
@@ -60,7 +60,7 @@ function Register () {
           Register
         </Typography>
         <RegisterFormik />
-        <Link href='#' onClick={handleGoToLogin} variant="body2">
+        <Link onClick={handleGoToLogin} variant="body2">
           Already registered? Go to login
         </Link>
       </Box>

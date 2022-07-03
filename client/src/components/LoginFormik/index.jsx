@@ -1,45 +1,33 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { register } from '../../features/auth/authSlice';
+import { login, setRemember } from '../../features/auth/authSlice';
 import { useFormik } from 'formik';
+import loginFormSchema from './schemaLoginForm';
 import Button from '@mui/material/Button';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
-import registerFormSchema from './schemaRegisterForm';
 
-function RegisterFormik () {
+function LoginFormik () {
   const startValues = {
-    name: '',
     email: '',
     password: '',
-    password2: ''
+    remember: false
   };
   const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: startValues,
-    validationSchema: registerFormSchema,
+    validationSchema: loginFormSchema,
     onSubmit: (values, { setSubmitting }) => {
-      dispatch(register(values));
+      if (values.remember) dispatch(setRemember());
+      dispatch(login(values));
       setSubmitting(false);
     }
   });
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <TextField
-        margin="normal"
-        required
-        fullWidth
-        id="name"
-        label="Name"
-        name="name"
-        autoComplete="name"
-        autoFocus
-        value={formik.values.name}
-        onChange={formik.handleChange}
-        error={formik.touched.name && Boolean(formik.errors.name)}
-        helperText={formik.touched.name && formik.errors.name}
-      />
       <TextField
         margin="normal"
         required
@@ -67,30 +55,24 @@ function RegisterFormik () {
         error={formik.touched.password && Boolean(formik.errors.password)}
         helperText={formik.touched.password && formik.errors.password}
       />
-      <TextField
-         margin="normal"
-         required
-         fullWidth
-         name="password2"
-         label="Confirm password"
-         type="password"
-         id="password2"
-         autoComplete="current-password"
-         value={formik.values.password2}
-         onChange={formik.handleChange}
-         error={formik.touched.password2 && Boolean(formik.errors.password2)}
-         helperText={formik.touched.password2 && formik.errors.password2}
-       />
+      <FormControlLabel
+        control={<Checkbox
+          color="primary"
+          checked={formik.values.remember}
+          onChange={() => formik.setFieldValue('remember', !formik.values.remember)}
+          />}
+          label="Remember me"
+      />
       <Button
         type="submit"
         fullWidth
         variant="contained"
         sx={{ mt: 3, mb: 2 }}
         disabled={formik.isSubmitting}
-      >Register
+      >Login
       </Button>
     </form>
   );
 };
 
-export default RegisterFormik;
+export default LoginFormik;

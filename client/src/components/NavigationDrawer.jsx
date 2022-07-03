@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeDrawer } from '../features/muiComponents/muiComponentsSlice';
+import useLogout from '../helpers/useLogout';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -9,12 +10,18 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import FaceIcon from '@mui/icons-material/Face';
 import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+import NoAccountsIcon from '@mui/icons-material/NoAccounts';
+import PasswordIcon from '@mui/icons-material/Password';
 
 function NavigationDrawer () {
+  const { user } = useSelector((state) => state.auth);
   const { openDrawer } = useSelector((state) => state.muiComponents);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const logout = useLogout();
 
   const toggleDrawer = () => (event) => {
     if (
@@ -30,16 +37,48 @@ function NavigationDrawer () {
 
   const handleRegister = () => navigate('/register');
 
-  const arrayToDisplay = [{
-    text: 'Register',
-    icon: <AccountCircleIcon />,
-    onClick: handleRegister
+  const handleChangeName = () => navigate('/name');
+
+  const handleChangePassword = () => {
+    // dispatch(requirePasswordChange()); TODO
+    navigate('/verification');
+  };
+
+  const handleLogout = () => logout();
+
+  const handleDeleteAccount = () => {}; // TODO
+
+  let arrayToDisplay = [{
+    text: 'Change name',
+    icon: <FaceIcon />,
+    onClick: handleChangeName
   }, {
-    text: 'Login',
-    icon: <LoginIcon />,
-    onClick: handleLogin
+    text: 'Change password',
+    icon: <PasswordIcon />,
+    onClick: handleChangePassword
+  }, {
+    text: 'Logout',
+    icon: <LogoutIcon />,
+    onClick: handleLogout
+  }, {
+    text: 'Delete account',
+    icon: <NoAccountsIcon />,
+    onClick: handleDeleteAccount
   }
   ];
+
+  if (!user) {
+    arrayToDisplay = [{
+      text: 'Register',
+      icon: <AccountCircleIcon />,
+      onClick: handleRegister
+    }, {
+      text: 'Login',
+      icon: <LoginIcon />,
+      onClick: handleLogin
+    }
+    ];
+  }
 
   return (
     <Drawer

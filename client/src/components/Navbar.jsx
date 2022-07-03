@@ -1,7 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeDrawer } from '../features/muiComponents/muiComponentsSlice';
+import useLogout from '../helpers/useLogout';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -10,8 +11,11 @@ import Toolbar from '@mui/material/Toolbar';
 import MenuIcon from '@mui/icons-material/Menu';
 
 function Navbar () {
+  const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
+  const logout = useLogout();
 
   const handleGoToDashboard = () => navigate('/');
 
@@ -21,7 +25,7 @@ function Navbar () {
 
   const handleChangeDrawer = () => dispatch(changeDrawer());
 
-  // <PaidIcon fontSize="large" color="secondary" />
+  const handleLogout = () => logout();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -53,12 +57,18 @@ function Navbar () {
             </Button>
 
           </Box>
-          <Button onClick={handleGoToRegister} color="inherit">
-            Register
-          </Button>
-          <Button onClick={handleGoToLogin} color="inherit">
-            Login
-          </Button>
+          {user
+            ? <Button onClick={handleLogout} color="inherit">
+              Logout
+            </Button>
+            : location.pathname === '/login'
+              ? <Button onClick={handleGoToRegister} color="inherit">
+                Register
+              </Button>
+              : <Button onClick={handleGoToLogin} color="inherit">
+                Login
+              </Button>
+          }
           <IconButton
             size="large"
             edge="start"

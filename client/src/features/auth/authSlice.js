@@ -55,7 +55,16 @@ export const login = createAsyncThunk(
         error.toString();
       return thunkAPI.rejectWithValue(message);
     }
-  });
+  }
+);
+
+// User logout
+export const logout = createAsyncThunk(
+  'auth/logout',
+  async (thunkAPI) => {
+    await axiosInstance('/users/logout', {}, 'DELETE'); ;
+  }
+);
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -107,6 +116,15 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+      })
+      // Logout
+      .addCase(logout.fulfilled, (state) => {
+        state.user = null;
+        state.remember = false;
+        localStorage.removeItem('user');
+        sessionStorage.removeItem('user');
+        localStorage.removeItem('remember');
+        sessionStorage.removeItem('remember');
       });
   }
 });

@@ -15,5 +15,5 @@ export const muiComponentsSlice = createSlice({
   }
 });
 
-export const { changeDrawer } = muiComponentsSlice.actions;
+export const { resetMUIComponents, changeDrawer } = muiComponentsSlice.actions;
 export default muiComponentsSlice.reducer;

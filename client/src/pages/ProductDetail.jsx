@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getProductWithStock,
   resetProductStock,
-  getBrand
+  getBrand,
+  deleteProduct
 } from '../features/products/productsSlice';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
 function ProductDetail () {
   const [stockArray, setStockArray] = useState([]);
+  const { user } = useSelector(state => state.auth);
   const { productStock, productStockBrand } = useSelector(state => state.products);
+  const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
 
@@ -138,6 +142,18 @@ function ProductDetail () {
               >{Object.getOwnPropertyNames(obj)[0]}</Box>;
             })}
           </Box>
+          { user?.roleId === 2 && /delete/.test(location.pathname) &&
+            <Button
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2, backgroundColor: 'error.light', ':hover': { backgroundColor: 'red' } }}
+              onClick={() => {
+                dispatch(deleteProduct(location.pathname.substring(location.pathname.lastIndexOf('/') + 1)));
+                navigate('/products/delete');
+              }}
+            >Delete product
+            </Button>
+          }
         </Box>
       </Box>
     </Container>

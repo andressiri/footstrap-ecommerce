@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 
 function ProductsCardsDisplay ({ fromParent }) {
-  const { array } = fromParent;
+  const { array, action } = fromParent;
   const { productsShown } = useSelector((state) => state.products);
   const arrayToDisplay = array.slice(0, productsShown);
   const dispatch = useDispatch();
@@ -56,7 +56,7 @@ function ProductsCardsDisplay ({ fromParent }) {
             backgroundColor: '#eceff1'
           }}>
           <ProductCard
-            fromParent={{ obj }}
+            fromParent={{ obj, action }}
           />
         </Card>
 
@@ -67,7 +67,8 @@ function ProductsCardsDisplay ({ fromParent }) {
 
 ProductsCardsDisplay.propTypes = {
   fromParent: PropTypes.object,
-  'fromParent.array': PropTypes.array
+  'fromParent.array': PropTypes.array,
+  'fromParent.action': PropTypes.string
 };
 
 export default ProductsCardsDisplay;

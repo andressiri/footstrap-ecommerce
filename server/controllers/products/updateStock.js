@@ -1,5 +1,5 @@
 // @description Handle update product stock
-// @route PUT /api/v1/products/:id
+// @route PUT /api/v1/products/stock/:id
 // @access Private - Admin only
 const asyncHandler = require('express-async-handler');
 const { Size, Product, Brand } = require('../../models');

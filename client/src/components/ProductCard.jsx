@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { deleteProduct } from '../features/products/productsSlice';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
@@ -10,12 +12,23 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardActions from '@mui/material/CardActions';
 
 function ProductCard ({ fromParent }) {
-  const { obj } = fromParent;
+  const { obj, action } = fromParent;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleCard = () => {
-    navigate(`/products/product/${obj.id}`);
-  };
+  let buttonText = 'Add to cart';
+  let buttonColor = 'secondary.main';
+  let buttonHover = 'primary.main';
+  let buttonAction = () => navigate(`/products/product/${obj.id}`);
+  let handleCard = () => navigate(`/products/product/${obj.id}`);
+
+  if (action === 'delete') {
+    buttonText = 'Delete';
+    buttonColor = 'error.light';
+    buttonHover = 'red';
+    buttonAction = () => dispatch(deleteProduct(obj.id));
+    handleCard = () => navigate(`/products/delete/${obj.id}`);
+  }
 
   return (
     <>
@@ -63,13 +76,16 @@ function ProductCard ({ fromParent }) {
           ${obj.price}
         </Typography>
         <CardActions>
-          <Button size='small' variant='contain' sx={{
-            backgroundColor: 'secondary.main',
-            ':hover': {
-              backgroundColor: 'primary.main'
-            }
-          }}>
-            Add to cart
+          <Button
+            size='small'
+            variant='contain'
+            sx={{
+              backgroundColor: buttonColor,
+              ':hover': { backgroundColor: buttonHover }
+            }}
+            onClick={buttonAction}
+          >
+            {buttonText}
           </Button>
         </CardActions>
       </Box>
@@ -80,7 +96,8 @@ function ProductCard ({ fromParent }) {
 
 ProductCard.propTypes = {
   fromParent: PropTypes.object,
-  'fromParent.obj': PropTypes.object
+  'fromParent.obj': PropTypes.object,
+  'fromParent.action': PropTypes.string
 };
 
 export default ProductCard;

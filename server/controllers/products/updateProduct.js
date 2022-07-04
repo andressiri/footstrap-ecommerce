@@ -1,5 +1,5 @@
 // @description Handle product update
-// @route PUT /api/v1/products/:id
+// @route PUT /api/v1/products/product/:id
 // @access Private - Admin only
 const asyncHandler = require('express-async-handler');
 const { Product, Brand } = require('../../models');

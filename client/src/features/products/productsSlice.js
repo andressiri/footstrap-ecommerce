@@ -79,6 +79,19 @@ export const getBrand = createAsyncThunk(
   }
 );
 
+// Delete product
+export const deleteProduct = createAsyncThunk(
+  'products/deleteProduct',
+  async (id, thunkAPI) => {
+    try {
+      return await axiosInstance(`/products/product/${id}`, {}, 'DELETE');
+    } catch (error) {
+      const message = getErrorMessage(error);
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
@@ -167,6 +180,25 @@ export const productsSlice = createSlice({
         state.productStockBrand = action.payload;
       })
       .addCase(getBrand.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      // Delete product
+      .addCase(deleteProduct.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteProduct.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        if (state.products[0]) {
+          state.products = state.products.filter((product) => {
+            return product.id !== action.payload.id;
+          });
+        }
+        state.message = action.payload.message;
+      })
+      .addCase(deleteProduct.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

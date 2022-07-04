@@ -23,6 +23,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import CreateProduct from './pages/CreateProduct';
+import DeleteProduct from './pages/DeleteProduct';
 
 function App () {
   const { remember } = useSelector((state) => state.auth);
@@ -96,6 +97,8 @@ function App () {
               <Route path='/products' element={<Products />} />
               <Route path='/products/product/*' element={<ProductDetail />} />
               <Route path='/products/create' element={<CreateProduct />} />
+              <Route path='/products/delete' element={<DeleteProduct />} />
+              <Route path='/products/delete/*' element={<ProductDetail />} />
             </Routes>
             <Footer />
           </animated.div>;

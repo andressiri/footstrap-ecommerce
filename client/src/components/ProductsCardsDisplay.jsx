@@ -33,7 +33,7 @@ function ProductsCardsDisplay ({ fromParent }) {
   }, [setObservedElements, arrayToDisplay]);
 
   return (
-    <Box id='asdasd' sx={{
+    <Box sx={{
       display: 'flex',
       flexWrap: 'wrap',
       justifyContent: 'center'
@@ -56,7 +56,6 @@ function ProductsCardsDisplay ({ fromParent }) {
             backgroundColor: '#eceff1'
           }}>
           <ProductCard
-            id='asdxzczxc'
             fromParent={{ obj }}
           />
         </Card>

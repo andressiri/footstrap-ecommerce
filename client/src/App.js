@@ -21,6 +21,7 @@ import ChangeName from './pages/ChangeName';
 import Footer from './components/Footer';
 import CssBaseline from '@mui/material/CssBaseline';
 import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
 
 function App () {
   const { remember } = useSelector((state) => state.auth);
@@ -92,6 +93,7 @@ function App () {
               <Route path='/name' element={<ChangeName />} />
               <Route path='/delete-account' element={<PasswordToDelete />} />
               <Route path='/products' element={<Products />} />
+              <Route path='/products/product/*' element={<ProductDetail />} />
             </Routes>
             <Footer />
           </animated.div>;

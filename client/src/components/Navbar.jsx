@@ -53,7 +53,7 @@ function Navbar () {
               sx={{ m: -2 }}
               onClick={handleGoToDashboard}
               >
-              <img width="50px" src="icon.png" alt="footstrap logo" />
+              <img width="50px" src="/icon.png" alt="footstrap logo" />
             </IconButton>
             <Button
               onClick={handleGoToDashboard}

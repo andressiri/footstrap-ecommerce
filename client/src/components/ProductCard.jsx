@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
@@ -10,10 +11,18 @@ import CardActions from '@mui/material/CardActions';
 
 function ProductCard ({ fromParent }) {
   const { obj } = fromParent;
+  const navigate = useNavigate();
+
+  const handleCard = () => {
+    navigate(`/products/product/${obj.id}`);
+  };
 
   return (
     <>
-      <CardActionArea>
+      <CardActionArea
+        sx={{ borderRadius: '10px' }}
+        onClick={handleCard}
+      >
         <CardMedia
           component='img'
           height='250'

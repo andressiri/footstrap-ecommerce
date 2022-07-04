@@ -9,7 +9,7 @@ function Products () {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProducts());
+    if (!products[0]) dispatch(getProducts());
     dispatch(refreshProductsShown(10));
   }, []);
 

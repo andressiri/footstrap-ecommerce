@@ -10,7 +10,8 @@ const initialState = {
   message: '',
   productsShown: 0,
   productStock: {},
-  productStockBrand: {}
+  productStockBrand: {},
+  brands: []
 };
 
 // Get Products
@@ -32,6 +33,32 @@ export const getProductWithStock = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       return await axiosInstance(`/products/stock/${id}`, {}, 'GET');
+    } catch (error) {
+      const message = getErrorMessage(error);
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Create product
+export const createProduct = createAsyncThunk(
+  'products/createProduct',
+  async (productData, thunkAPI) => {
+    try {
+      return await axiosInstance('/products', productData, 'POST');
+    } catch (error) {
+      const message = getErrorMessage(error);
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Get Brands
+export const getBrands = createAsyncThunk(
+  'products/getBrands',
+  async (thunkAPI) => {
+    try {
+      return await axiosInstance('/brands', {}, 'GET');
     } catch (error) {
       const message = getErrorMessage(error);
       return thunkAPI.rejectWithValue(message);
@@ -101,7 +128,36 @@ export const productsSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
-      // Get product with stock
+      // Create product
+      .addCase(createProduct.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createProduct.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        if (state.products[0]) state.products.push(action.payload.productData);
+        state.message = action.payload.message;
+      })
+      .addCase(createProduct.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      // Get Brands
+      .addCase(getBrands.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getBrands.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.brands = action.payload;
+      })
+      .addCase(getBrands.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      // Get Brand
       .addCase(getBrand.pending, (state) => {
         state.isLoading = true;
       })

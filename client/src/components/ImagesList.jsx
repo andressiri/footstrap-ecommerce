@@ -19,19 +19,20 @@ function ImagesList ({ fromParent }) {
       m: { xs: 0, sm: 2 },
       mb: 2
     }}>
-      <ImageListItem key="Subheader" cols={2}>
-      </ImageListItem>
       {array.map((prod) => (
-        <ImageListItem key={prod.image_url}>
+        <ImageListItem
+          key={prod.image_url}
+          sx={{ maxHeight: '150px', minHeight: '150px', overflow: 'hidden' }}
+        >
           <img
             src={`${prod.image_url}?w=248&fit=crop&auto=format`}
             srcSet={`${prod.image_url}?w=248&fit=crop&auto=format&dpr=2 2x`}
             alt={`A picture of ${prod.name} shoe`}
-            loading="lazy"
           />
           <ImageListItemBar
             title={prod.name}
             subtitle={prod.price}
+            sx={{ mb: -1 }}
             actionIcon={
               <IconButton
                 sx={{ color: 'rgba(255, 255, 255, 0.54)' }}

@@ -22,6 +22,7 @@ import Footer from './components/Footer';
 import CssBaseline from '@mui/material/CssBaseline';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
+import CreateProduct from './pages/CreateProduct';
 
 function App () {
   const { remember } = useSelector((state) => state.auth);
@@ -94,6 +95,7 @@ function App () {
               <Route path='/delete-account' element={<PasswordToDelete />} />
               <Route path='/products' element={<Products />} />
               <Route path='/products/product/*' element={<ProductDetail />} />
+              <Route path='/products/create' element={<CreateProduct />} />
             </Routes>
             <Footer />
           </animated.div>;

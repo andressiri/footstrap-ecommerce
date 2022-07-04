@@ -5,7 +5,7 @@ export const axiosInstance = async (endpoint, data = {}, method = 'GET') => {
   const user = JSON.parse(localStorage.getItem('user'));
   const temporaryToken = JSON.parse(sessionStorage.getItem('temporaryToken'));
   const token = user ? user.token : temporaryToken || '';
-  const storageFile = localStorage.getItem('file');
+  const storageFile = sessionStorage.getItem('file');
   let contentType = 'application/json';
   let formData = data;
 
@@ -14,7 +14,7 @@ export const axiosInstance = async (endpoint, data = {}, method = 'GET') => {
     formData = new FormData();
     for (const key in data) { formData.append(key, data[key]); }
     const file = await (await fetch(storageFile)).blob();
-    formData.append('file', file, `${UUIDV4()}.jpeg`);
+    formData.append('image', file, `${UUIDV4()}.jpeg`);
   }
 
   const response = await axios({
@@ -31,6 +31,6 @@ export const axiosInstance = async (endpoint, data = {}, method = 'GET') => {
     throw new Error(response);
   }
 
-  localStorage.removeItem('file');
+  sessionStorage.removeItem('file');
   return response.data;
 };

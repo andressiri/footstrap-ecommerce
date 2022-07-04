@@ -40,7 +40,7 @@ function ProductDetail () {
     setStockArray(arr);
   }, [productStock]);
 
-  if (!productStock.image_url || !productStockBrand.logo_url) return (<></>);
+  if (!productStock.image_url || !productStockBrand.logo_url) return (<div style={{ width: '1px', height: '1px' }} />);
 
   return (
     <Container component="main" maxWidth="lg" >

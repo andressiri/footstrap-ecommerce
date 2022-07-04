@@ -49,7 +49,7 @@ function ChangePassword () {
     };
   };
 
-  if (!temporaryToken) return (<></>);
+  if (!temporaryToken) return (<div style={{ width: '1px', height: '1px' }} />);
 
   return (
     <Container component="main" maxWidth="xs">

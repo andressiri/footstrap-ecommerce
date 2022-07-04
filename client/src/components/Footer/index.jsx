@@ -17,7 +17,7 @@ function Footer () {
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    setTimeout(() => { setShow(true); }, 200);
+    setTimeout(() => { setShow(true); }, 400);
   }, []);
 
   const handleGoToDashboard = () => navigate('/');
@@ -40,7 +40,7 @@ function Footer () {
     link: 'https://www.instagram.com/'
   }];
 
-  if (!show) return (<></>);
+  if (!show) return (<div style={{ width: '1px', height: '1px' }} />);
 
   return (
     <Fade in={show}>

@@ -45,7 +45,7 @@ function Login () {
     navigate('/verification');
   };
 
-  if (user) return (<></>);
+  if (user) return (<div style={{ width: '1px', height: '1px' }} />);
 
   return (
     <Container component="main" maxWidth="xs" >

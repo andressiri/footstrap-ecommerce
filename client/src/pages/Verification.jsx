@@ -72,7 +72,7 @@ function Verification () {
     !userVerificationRequired &&
     !accountDeleteRequired &&
     !passwordChangeRequired
-  ) return (<></>);
+  ) return (<div style={{ width: '1px', height: '1px' }} />);
 
   return (
     <Container component="main" maxWidth="xs">

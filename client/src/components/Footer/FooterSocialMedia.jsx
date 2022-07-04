@@ -8,9 +8,9 @@ function FooterSocialMedia ({ fromParent }) {
   const { array } = fromParent;
 
   return (
-    <Box sx={{ display: 'flex', flexGrow: 1 }}>
+    <Box sx={{ display: 'flex', flexGrow: 1, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
       {array.map((obj, i) => (
-        <Button key={`${obj.text}${i}`} sx={{ color: 'white' }} >
+        <Button key={`${obj.text}${i}`} sx={{ color: 'white', textTransform: 'none', ml: 1 }} >
           <Link
             href={obj.link}
             target='_blank'

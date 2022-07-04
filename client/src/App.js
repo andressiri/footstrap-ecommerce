@@ -19,7 +19,8 @@ import Verification from './pages/Verification';
 import ChangePassword from './pages/ChangePassword';
 import ChangeName from './pages/ChangeName';
 import Footer from './components/Footer';
-import { CssBaseline } from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
+import Products from './pages/Products';
 
 function App () {
   const { remember } = useSelector((state) => state.auth);
@@ -90,6 +91,7 @@ function App () {
               <Route path='/password' element={<ChangePassword />} />
               <Route path='/name' element={<ChangeName />} />
               <Route path='/delete-account' element={<PasswordToDelete />} />
+              <Route path='/products' element={<Products />} />
             </Routes>
             <Footer />
           </animated.div>;

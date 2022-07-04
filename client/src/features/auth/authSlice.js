@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { axiosInstance } from '../../helpers/axiosInstance';
+import getErrorMessage from '../../helpers/getErrorMessage';
 
 // Get state from localStorage
 const user = JSON.parse(localStorage.getItem('user')) ||
@@ -29,14 +30,6 @@ const initialState = {
   passwordChangeRequired: false,
   accountDeleteRequired: false,
   codeSent: false
-};
-
-const getErrorMessage = (error) => {
-  const message =
-    (error.response && error.response.data && error.response.data.message) ||
-     error.message ||
-     error.toString();
-  return message;
 };
 
 // Register user

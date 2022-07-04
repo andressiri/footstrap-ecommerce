@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import FooterSocialMedia from './FooterSocialMedia';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import Button from '@mui/material/Button';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import FooterSocialMedia from './FooterSocialMedia';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import Fade from '@mui/material/Fade';
 
 function Footer () {
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
+
+  React.useEffect(() => {
+    setTimeout(() => { setShow(true); }, 200);
+  }, []);
 
   const handleGoToDashboard = () => navigate('/');
 
@@ -34,47 +40,51 @@ function Footer () {
     link: 'https://www.instagram.com/'
   }];
 
+  if (!show) return (<></>);
+
   return (
-    <Box component="footer" sx={{
-      p: 2,
-      mt: 5,
-      backgroundColor: 'primary.main',
-      borderTopStyle: 'solid',
-      borderTopColor: 'warning.light',
-      borderTopWidth: '2px',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center'
-    }}>
-      <Box sx={{ display: 'flex', flexGrow: 1 }}>
-        <IconButton
+    <Fade in={show}>
+      <Box component="footer" sx={{
+        p: 2,
+        mt: 5,
+        backgroundColor: 'primary.main',
+        borderTopStyle: 'solid',
+        borderTopColor: 'warning.light',
+        borderTopWidth: '2px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        <Box sx={{ display: 'flex', flexGrow: 1 }}>
+          <IconButton
           size="large"
           color="inherit"
           aria-label="menu"
           sx={{ m: -2 }}
           onClick={handleGoToDashboard}
           >
-          <img width="25px" src="icon.png" alt="footstrap logo" />
-        </IconButton>
-        <Button
+            <img width="25px" src="icon.png" alt="footstrap logo" />
+          </IconButton>
+          <Button
           onClick={handleGoToDashboard}
           color="inherit"
-          sx={{ fontSize: '1.2rem', display: { xs: 'none', sm: 'flex' } }}
+          sx={{ fontSize: '1.2rem' }}
         >
-          Footstrap
-        </Button>
+            Footstrap
+          </Button>
+        </Box>
+        <FooterSocialMedia fromParent={{ array: socialMediaArray }}/>
+        <Typography variant="body2" color="secondary.main">
+          {'Copyright © '}
+          <Link color="inherit" href="https://github.com/andressiri">
+            Footstrap
+          </Link>{' '}
+          {new Date().getFullYear()}
+          {'.'}
+        </Typography>
       </Box>
-      <FooterSocialMedia fromParent={{ array: socialMediaArray }}/>
-      <Typography variant="body2" color="secondary.main">
-        {'Copyright © '}
-        <Link color="inherit" href="https://github.com/andressiri">
-          Footstrap
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    </Box>
+    </Fade>
   );
 }
 

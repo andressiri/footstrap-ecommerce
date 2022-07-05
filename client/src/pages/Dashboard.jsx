@@ -22,13 +22,15 @@ function Dashboard () {
   }, [isError, isSuccess, message]);
 
   const firstArray = [];
-  const secondArray = products.filter((prod) => {
-    if ([1, 3, 5].includes(prod.brandId)) {
-      firstArray.push(prod);
-      return false;
-    }
-    return prod;
-  });
+  const secondArray = Array.isArray(products)
+    ? products.filter((prod) => {
+      if ([1, 3, 5].includes(prod.brandId)) {
+        firstArray.push(prod);
+        return false;
+      }
+      return prod;
+    })
+    : [];
 
   return (
     <Box sx={{

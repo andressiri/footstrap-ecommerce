@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const session = require('express-session');
 const fileUpload = require('express-fileupload');
 require('custom-env').env(process.env.NODE_ENV);
@@ -36,6 +37,13 @@ app.use(session({
 
 // @/api/v1 router
 app.use('/api/v1', require('./routes'));
+
+// Serve frontend
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'public')));
+
+  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'public', 'index.html')));
+};
 
 // Error handler
 app.use(require('./middleware/errorHandler'));

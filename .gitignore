@@ -1,6 +1,8 @@
 node_modules
 .vscode
 .eslintcache
+server/public
+build
 
 # misc
 .env

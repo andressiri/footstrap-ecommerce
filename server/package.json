@@ -4,8 +4,9 @@
   "description": "Server for Footstrap website dedicated API",
   "main": "./bin/www",
   "scripts": {
-    "start": "cross-env NODE_ENV=development node ./bin/www",
-    "dev": "cross-env NODE_ENV=development nodemon ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "cross-env NODE_ENV=development nodemon ./bin/www",
+    "createDatabase": "npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
   "author": "Andrés Siri",
   "license": "ISC",

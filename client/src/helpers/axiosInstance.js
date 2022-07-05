@@ -19,7 +19,7 @@ export const axiosInstance = async (endpoint, data = {}, method = 'GET') => {
 
   const response = await axios({
     method,
-    url: `${endpoint}`,
+    url: `/api/v1${endpoint}`,
     data: formData,
     headers: {
       authorization: `Bearer ${token}`,

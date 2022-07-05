@@ -45,7 +45,7 @@ export const createProduct = createAsyncThunk(
   'products/createProduct',
   async (productData, thunkAPI) => {
     try {
-      return await axiosInstance('/products/product', productData, 'POST');
+      return await axiosInstance('/products', productData, 'POST');
     } catch (error) {
       const message = getErrorMessage(error);
       return thunkAPI.rejectWithValue(message);

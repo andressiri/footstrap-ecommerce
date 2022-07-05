@@ -38,7 +38,9 @@ function Dashboard () {
       flexDirection: 'column',
       alignItems: 'center'
     }}>
-      <Box sx={{
+      <Box
+      maxWidth="lg"
+      sx={{
         backgroundColor: 'warning.light',
         m: 5,
         mt: 0,
@@ -55,19 +57,21 @@ function Dashboard () {
         <Typography variant='h4' color="primary" >Welcome to Footstrap!</Typography>
         <Typography variant='h4' sx={{ color: 'red', fontWeight: 'bolder' }} >Check our members offers!</Typography>
       </Box>
-      <Box sx={{
-        width: '90%',
-        display: 'flex',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: 'white',
-        p: { xs: 2, sm: 4 },
-        borderRadius: 2,
-        borderWidth: '3px',
-        borderColor: 'warning.light',
-        borderStyle: 'solid'
-      }} >
+      <Box
+      maxWidth="lg"
+       sx={{
+         width: '90%',
+         display: 'flex',
+         flexWrap: 'wrap',
+         alignItems: 'center',
+         justifyContent: 'center',
+         background: 'white',
+         p: { xs: 2, sm: 4 },
+         borderRadius: 2,
+         borderWidth: '3px',
+         borderColor: 'warning.light',
+         borderStyle: 'solid'
+       }} >
         <Box>
           <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
             <Box sx={{ width: { xs: '30%', sm: '120px' } }}>

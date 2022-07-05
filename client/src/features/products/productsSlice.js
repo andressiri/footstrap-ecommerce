@@ -45,7 +45,20 @@ export const createProduct = createAsyncThunk(
   'products/createProduct',
   async (productData, thunkAPI) => {
     try {
-      return await axiosInstance('/products', productData, 'POST');
+      return await axiosInstance('/products/product', productData, 'POST');
+    } catch (error) {
+      const message = getErrorMessage(error);
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Update product
+export const updateProduct = createAsyncThunk(
+  'products/updateProduct',
+  async (obj, thunkAPI) => {
+    try {
+      return await axiosInstance(`/products/product/${obj.id}`, obj.values, 'PUT');
     } catch (error) {
       const message = getErrorMessage(error);
       return thunkAPI.rejectWithValue(message);
@@ -152,6 +165,28 @@ export const productsSlice = createSlice({
         state.message = action.payload.message;
       })
       .addCase(createProduct.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      // Update product
+      .addCase(updateProduct.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateProduct.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        if (state.products[0]) {
+          state.products = state.products.map((product) => {
+            if (product.id === action.payload.productData.id) {
+              return action.payload.productData;
+            }
+            return product;
+          });
+        }
+        state.message = action.payload.message;
+      })
+      .addCase(updateProduct.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

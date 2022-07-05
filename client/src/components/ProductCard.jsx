@@ -30,6 +30,14 @@ function ProductCard ({ fromParent }) {
     handleCard = () => navigate(`/products/delete/${obj.id}`);
   }
 
+  if (action === 'update') {
+    buttonText = 'Update';
+    buttonColor = 'primary.main';
+    buttonHover = 'secondary.main';
+    buttonAction = () => navigate(`/products/update/${obj.id}`);
+    handleCard = () => navigate(`/products/update/${obj.id}`);
+  }
+
   return (
     <>
       <CardActionArea

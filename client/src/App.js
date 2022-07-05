@@ -99,6 +99,8 @@ function App () {
               <Route path='/products/create' element={<CreateProduct />} />
               <Route path='/products/delete' element={<DeleteProduct />} />
               <Route path='/products/delete/*' element={<ProductDetail />} />
+              <Route path='/products/update' element={<Products />} />
+              <Route path='/products/update/*' element={<CreateProduct />} />
             </Routes>
             <Footer />
           </animated.div>;

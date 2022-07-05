@@ -1,6 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createProduct, getBrands } from '../../features/products/productsSlice';
+import {
+  createProduct,
+  getBrands,
+  getProductWithStock,
+  updateProduct
+} from '../../features/products/productsSlice';
 import { useFormik } from 'formik';
 import productFormSchema from './productFormSchema';
 import Button from '@mui/material/Button';
@@ -14,36 +19,56 @@ import CardActionArea from '@mui/material/CardActionArea';
 import Card from '@mui/material/Card';
 
 function ProductFormik () {
-  const { brands } = useSelector((state) => state.products);
-  const [imagePreview, setImagePreview] = useState('/logo512.png');
-  const inputFile = useRef(null);
-  const startValues = {
+  const [startValues, setStartValues] = useState({
     name: '',
     description: '',
     price: '',
     brandId: '',
     gender: '',
-    type: '',
-    imageUploaded: false
-  };
+    type: ''
+  });
+  const { brands, productStock } = useSelector((state) => state.products);
+  const [imagePreview, setImagePreview] = useState('/logo512.png');
+  const inputFile = useRef(null);
   const dispatch = useDispatch();
+  let productID = '';
+  let buttonText = 'Create product';
+  if (/update/.test(location.pathname)) {
+    productID = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
+    buttonText = 'Update product';
+  }
 
   useEffect(() => {
     dispatch(getBrands());
+    if (/update/.test(location.pathname)) dispatch(getProductWithStock(productID));
   }, []);
 
   const formik = useFormik({
     initialValues: startValues,
     validationSchema: productFormSchema,
+    enableReinitialize: true,
     onSubmit: (values, { setSubmitting }) => {
       let auxPrice = values.price.replace(/\.$/, '');
       auxPrice = auxPrice.replace(/^0*/, '');
       if (!auxPrice || auxPrice.charAt(0) === '.') auxPrice = `0${auxPrice}`;
       values.price = auxPrice;
-      dispatch(createProduct(values));
+      if (/update/.test(location.pathname)) {
+        dispatch(updateProduct({ id: productID, values }));
+      } else {
+        dispatch(createProduct(values));
+      }
       setSubmitting(false);
     }
   });
+
+  useEffect(() => {
+    if (/update/.test(location.pathname)) {
+      setImagePreview(productStock.image_url);
+      const { name, description, price, brandId, gender, type } = productStock;
+      setStartValues({ name: `${name}`, description: `${description}`, price: `${price}`, brandId: `${brandId}`, gender: `${gender}`, type: `${type}` });
+      formik.resetForm({ values: startValues });
+    }
+  }, [productStock]);
 
   const handleUploadImage = () => inputFile.current.click();
 
@@ -225,7 +250,7 @@ function ProductFormik () {
         variant="contained"
         sx={{ mt: 3, mb: 2 }}
         disabled={formik.isSubmitting}
-      >Create product
+      >{buttonText}
       </Button>
     </form>
   );

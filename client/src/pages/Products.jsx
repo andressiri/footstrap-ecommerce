@@ -7,6 +7,8 @@ import ProductsCardsDisplay from '../components/ProductsCardsDisplay';
 function Products () {
   const { products, isError, isSuccess, message } = useSelector((state) => state.products);
   const dispatch = useDispatch();
+  let action = 'customer';
+  if (/update/.test(location.pathname)) action = 'update';
 
   useEffect(() => {
     if (!products[0]) dispatch(getProducts());
@@ -21,7 +23,7 @@ function Products () {
 
   return (
     <>
-      <ProductsCardsDisplay fromParent={{ array: products, action: 'customer' }} />
+      <ProductsCardsDisplay fromParent={{ array: products, action }} />
     </>
   );
 }

@@ -15,6 +15,8 @@
   ## Breve descripción
 
   Footstrap ecommerce es un sitio web para un comercio de zapatillas, donde los clientes pueden ver los productos en venta y el dueño de la tienda puede manejar que quiere mostrar. Por el momento, en el cliente es posible para el administrador elegir qué productos mostrar con ciertos detalles, modificarlos, agregar nuevos y eliminar otros. Del lado del servidor, la API permite manejar información para otras funcionalidades, como agregar y manejar marcas y el stock de cada producto.
+  
+  ![interfaz del admin](/assets/README/admin-menu.png)
 
   ## Motivación para el proyecto
 
@@ -219,6 +221,8 @@
   ## Brief description
 
   Footstrap ecommerce is a website for a sneaker store, where customers can see the products for sale and the store owner can manage what he wants to display. At the moment, on the client side it is possible for the administrator to choose which products to display with certain details, modify them, add new ones and remove others. On the server side, the API allows to manage information for other functionalities, such as adding and managing brands and the stock of each product.
+  
+  ![admin interface](/assets/README/admin-menu.png)
 
   ## Motivation for the project
 

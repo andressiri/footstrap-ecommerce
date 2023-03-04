@@ -1,6 +1,8 @@
 # [<img src="/assets/README/logo-white-bg.png" alt="Footstrap logo" width="50"/>](https://footstrap-ecommerce-production.up.railway.app/) Footstrap ecommerce 
 
-***
+<details>
+
+  <summary>Español</summary>
 
   ## Ir al sitio
   
@@ -197,3 +199,5 @@
   - [AWS S3](https://aws.amazon.com/es/s3/): un servicio de almacenamiento de objetos de AWS, utilizado para almacenar las imágenes.
 
   </details>
+
+</details>

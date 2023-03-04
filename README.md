@@ -296,9 +296,9 @@
   10. Create the database, do the migrations and populate it with the `npm run createDatabase` command. This will run three Sequelize client commands. The first will create the database, the second will create the necessary tables with the necessary conditions for the API to work and the third will populate the database with products and users, including the user `admin@test.com` with password `123456`, which should be used to test the functionality of the application.
   11. Finally, to run the client on port 3000 use the `npm run client` command at the `/client` directory, and for the server on port 8080 use the `npm run server` command at the `/server` directory.
 
-  ## Documentación de la API
+  ## API Documentation
 
-  La API que brinda el servidor, creada para la aplicación, está [documentada y publicada con Postman](https://documenter.getpostman.com/view/16003276/UzJHQdAZ). Ahí puedes cargar y correr la API en postman directamente o usar postman en el navegador, utilizando el botón que dice "Run in Postman" ubicado en la esquina superior derecha de la ventana.
+  The API provided by the server, created for the application, is [documented and published with Postman](https://documenter.getpostman.com/view/16003276/UzJHQdAZ). There you can load and run the API in postman directly or use postman in the browser, using the "Run in Postman" button located in the upper right corner of the window.
 
   <details>
 
@@ -308,9 +308,9 @@
 
   </details>
 
-  ## Organización del código
+  ## Code arrangement
   
-  El código está organizado en archivos y directorios teniendo en cuenta la separación de intereses lo más posible. De esta manera los archivos tratan de ser lo más concisos que puedan y hacerse cargo de una sola acción de ser posible, incluso dando como resultado un archivo realmente corto, como algunos controladores en el directorio backend. Pero algunos de ellos deben agrupar varias acciones para encapsular una funcionalidad o una lógica, incluso si resultan en un archivo realmente largo, como los "slices" para el manejo de estados. Dicho esto, la mayor parte de la estructura y los nombres de los directorios en frontend siguen lo que es dado al usar `create-react-app` y el paquete `react-redux` que incluye Redux Toolkit.
+  The code is organized in files and directories taking in consideration the separation of interests as much as possible. In this way the files try to be as concise as possible and take care of just a single action if they can, even resulting in a really short file, like some controllers in the backend directory. But some of them should group several actions together to encapsulate a functionality or logic, even if they result in a really long file, like slices for state handling. That said, most of the frontend directory structure and names follow what is given by using `create-react-app` and the `react-redux` package included with `Redux Toolkit`.
 
   ## Tecnologías utilizadas
 

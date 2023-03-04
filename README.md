@@ -1,6 +1,6 @@
-# [<img src="/client/public/logo512.png" alt="Footstrap logo" width="30"/>](#) Footstrap ecommerce 
+# [<img src="/client/public/logo512.png" alt="Footstrap logo" width="30"/>](https://footstrap-ecommerce-production.up.railway.app/) Footstrap ecommerce 
 
-* [Ir al sitio de Footstrap](https://footstrap.herokuapp.com/)
+* [Ir al sitio de Footstrap](https://footstrap-ecommerce-production.up.railway.app/)
 
 ***
 

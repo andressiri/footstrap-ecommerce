@@ -52,8 +52,8 @@
   9. Crear un archivo `.env` en el directorio `/client` con las siguientes variables:
 				<pre>
 					NODE_ENV = development
-					DB_USER = < "postgres" (default) o tu nombre de usuario para esa base de datos de PostgreSQL >
-					DB_PASSWORD = < la para ese usuario de PostgreSQL >
+					DB_USER = < "postgres" (default) o tu nombre de usuario para la base de datos de PostgreSQL >
+					DB_PASSWORD = < la contraseña para ese usuario de PostgreSQL >
 					DB_NAME = < el nombre que elijas para tu base de datos PostgreSQL >
 					DB_HOST = localhost
 					DB_PORT = 5432
@@ -61,7 +61,7 @@
 					MAILER_MAIL = < tu dirección de email de <em><strong>gmail</strong></em> >
 					MAIL_PASSWORD" = < tu "contraseña de aplicación" generada desde google (no es la constraseña de tu email) >
 					AWS_ACCESS_KEY = < tu llave de acceso AWS >
-					AWS_SECRET_ACCES_KEY = < tu llave de accesso secreta de AWS >
+					AWS_SECRET_ACCESS_KEY = < tu llave de accesso secreta de AWS >
 					AWS_BUCKET_NAME = < el nombre del bucket del servicio S3 de AWS >
 				</pre>
       
@@ -230,43 +230,43 @@
 
   ## Installation
 
-  Para instalar esta aplicación y probarla en desarrollo necesitas tener instaladas en tu computadora versiones actualizadas de `Node.js`, `NPM` y `Git` para poder:
+  To install this application and test it in development you need to have updated versions of `Node.js`, `NPM` and `Git` installed on your computer in order to be able to:
 
-  1. Crear e ir a un nuevo directorio.
-  2. Inicializar un nuevo repositorio con el comando `git init`.
-  3. Obtener este repositorio remoto con el comando `git pull https://github.com/andressiri/footstrap-ecommerce`.
-  4. Instalar las dependencias del directorio raíz con el comando `npm install`.
-  5. Ir al directorio `/client` e instalar las dependencias con el comando `npm install` nuevamente.
-  6. Ir al directorio `/server` e instalar las dependencias con el comando `npm install` una vez más.
-  7. Crear un bucket con el servicio S3 de AWS.
-  8. Crear la base de datos PostgreSQL requerida:
+  1. Create and go to a new directory.
+  2. Initialize a new repository with `git init` command.
+  3. Obtain this repository with the command `git pull https://github.com/andressiri/footstrap-ecommerce`.
+  4. Install root drectory dependencies with the `npm install` command.
+  5. Move to `/client` directory and install the dependencies with the command `npm install` again.
+  6. Move to `/server` directory and install the dependencies with the command `npm install` one last time.
+  7. Create a bucket with the AWS S3 service.
+  8. Create the required PostgreSQL database:
 
       <details>
 
-        <summary>Instalar el servidor PostgreSQL en tu computadora.</summary>
+        <summary>Install PostgreSQL server in your computer.</summary>
 
-        - Descargar el instalador en [el sitio oficial](https://www.postgresql.org/download/).
-        - En Windows considerar que es necesario haber ingresado como administrador o superusuario para realizar la instalación. De ser necesario, se recomienda seguir [las instrucciones para Windows provistas en el sitio oficial](https://www.enterprisedb.com/docs/supported-open-source/postgresql/installer/02_installing_postgresql_with_the_graphical_installation_wizard/01_invoking_the_graphical_installer/).
-        - En Mac OS considerar que hay que correr el paquete dmg descargado como usuario administrador. De ser necesario, se recomienda seguir [las instrucciones para Mac OS provistas en el sitio oficial](https://www.enterprisedb.com/postgres-tutorials/installation-postgresql-mac-os).
-        - En Ubuntu para Linux seguir [ las instrucciones provistas en el sitio oficial para Ubuntu](https://www.enterprisedb.com/postgres-tutorials/how-install-postgres-ubuntu).
-        - Necesitarás la constraseña que ingreses en la instalación para conectarte a la base de datos.
+        - Download the installer at [official site](https://www.postgresql.org/download/).
+        - In Windows consider you need to be logged as administrator or superuser to perform and installation. If needed, follow the [instructions provided at official site for Windows](https://www.enterprisedb.com/docs/supported-open-source/postgresql/installer/02_installing_postgresql_with_the_graphical_installation_wizard/01_invoking_the_graphical_installer/).
+        - In Mac OS consider you have to run the downloaded dmg package as administrator user. If needed, follow the [instructions provided at official site for Mac OS](https://www.enterprisedb.com/postgres-tutorials/installation-postgresql-mac-os).
+        - In Ubuntu for Linux follow the [instructions provided at official site for Ubuntu](https://www.enterprisedb.com/postgres-tutorials/how-install-postgres-ubuntu).
+        - You will need the password your enter in the installation to connect to the database.
 
       </details>
       
-  9. Crear un archivo `.env` en el directorio `/client` con las siguientes variables:
+  9. Create a `.env` file at `/client` directory with the following variables:
 				<pre>
 					NODE_ENV = development
-					DB_USER = < "postgres" (default) o tu nombre de usuario para esa base de datos de PostgreSQL >
-					DB_PASSWORD = < la para ese usuario de PostgreSQL >
-					DB_NAME = < el nombre que elijas para tu base de datos PostgreSQL >
+					DB_USER = < "postgres" (default) or your user name for the PostgreSQL database >
+					DB_PASSWORD = < the password for that PostgreSQL user >
+					DB_NAME = < a name of your choice for the PostgreSQL database >
 					DB_HOST = localhost
 					DB_PORT = 5432
-					JWT_SECRET = < una cadena que quieras usar como secreto para el token de JWT >
-					MAILER_MAIL = < tu dirección de email de <em><strong>gmail</strong></em> >
-					MAIL_PASSWORD" = < tu "contraseña de aplicación" generada desde google (no es la constraseña de tu email) >
-					AWS_ACCESS_KEY = < tu llave de acceso AWS >
-					AWS_SECRET_ACCES_KEY = < tu llave de accesso secreta de AWS >
-					AWS_BUCKET_NAME = < el nombre del bucket del servicio S3 de AWS >
+					JWT_SECRET = < a string you want to use as secret for the JWT token >
+					MAILER_MAIL = < your <em><strong>gmail</strong></em> email address >
+  				        MAIL_PASSWORD" = < the "application password" generated with google > (not your email password)
+					AWS_ACCESS_KEY = < your AWS access key >
+					AWS_SECRET_ACCESS_KEY = < your secret AWS access key >
+					AWS_BUCKET_NAME = < the name of the bucket from AWS S3 service >
 				</pre>
       
       <details>

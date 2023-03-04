@@ -1,4 +1,4 @@
-# [<img src="/assets/README/logo-white-bg.png" alt="Footstrap logo" width="30"/>](https://footstrap-ecommerce-production.up.railway.app/) Footstrap ecommerce 
+# [<img src="/assets/README/logo-white-bg.png" alt="Footstrap logo" width="50"/>](https://footstrap-ecommerce-production.up.railway.app/) Footstrap ecommerce 
 
 * [Ir al sitio de Footstrap](https://footstrap-ecommerce-production.up.railway.app/)
 

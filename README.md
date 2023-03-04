@@ -271,30 +271,30 @@
       
       <details>
 
-      <summary>Cómo generar una contraseña de aplicación en Google</summary>
+      <summary>How to generate application password</summary>
 
-      Para generar una nueva contraseña de aplicación seguir los siguientes pasos:
+      To generate a new application password follow the next steps:
 
-      1. En una nueva pestaña de Chrome ir a "Gestionar tu cuenta de Google".
+      1. In a new Chrome tab go to "Manage your Google Account".
 
-          ![gestionar tu cuenta de google](/assets/README/gmail%20application%20password/1.%20Gestionar%20tu%20cuenta%20de%20Google.png)
+          ![go to Manage your Google Account](/assets/README/gmail%20application%20password/1.%20Manage%20your%20google%20account.png)
 
-      2. Ir a "Iniciar sesión en Google" en la sección de "Seguridad" y clickear en "Contraseñas de aplicaciones". Notar que es necesario tener la verificación en dos pasos activada para poder hacer esto.
+      2. Go to "Signing in to Google" in the "Security" section and click into "App passwords". Notice you must have your 2-Step Verification activated in order to do this.
 
-          ![ir a contraseñas de aplicaciones](/assets/README/gmail%20application%20password/2.%20Ir%20a%20contrase%C3%B1as%20de%20aplicaciones.png)
+          ![go to app passwords](/assets/README/gmail%20application%20password/2.%20Go%20to%20app%20passwords.png)
 
-      3. Crear una nueva constraseña de aplicación, el nombre es indistinto.
+      3. Create a new application password, you can name it as you want.
 
-          ![crear una nueva constraseña de aplicación](/assets/README/gmail%20application%20password/3.%20Crear%20una%20nueva%20contrase%C3%B1a%20de%20aplicaci%C3%B3n.png)
+          ![create a new application password](/assets/README/gmail%20application%20password/3.%20Create%20a%20new%20application%20password.png)
 
-      4. Obtener la nueva contraseña de aplicación creada.
+      4. Get the new password created.
 
-          ![obtener la nueva contraseña de aplicación](/assets/README/gmail%20application%20password/4.%20Obtener%20la%20constrase%C3%B1a%20de%20aplicaci%C3%B3n.png)
+          ![get the new password](/assets/README/gmail%20application%20password/4.%20Get%20the%20new%20password.png)
 
       </details>
       
-  10. Crear la base de datos, hacer las migraciones y poblarla con el comando `npm run createDatabase`. Esto correrá tres comandos del cliente de Sequelize. El primero creará la base de datos, el segundo creará las tablas necesarias con las condiciones necesarias para el funcionamiento de la API y el tercero poblará la base de datos con productos y usuarios, entre ellos el usuario `admin@test.com` con contraseña `123456`, que servirá para probar las funcionalidades de la aplicación.
-  11. Finalmente, para correr el cliente en el puerto 3000 usar el comando `npm run client` en el directorio `/client`, y para el servidor en el puerto 8080 usar el comando `npm run server` en el directorio `/server`.
+  10. Create the database, do the migrations and populate it with the `npm run createDatabase` command. This will run three Sequelize client commands. The first will create the database, the second will create the necessary tables with the necessary conditions for the API to work and the third will populate the database with products and users, including the user `admin@test.com` with password `123456`, which should be used to test the functionality of the application.
+  11. Finally, to run the client on port 3000 use the `npm run client` command at the `/client` directory, and for the server on port 8080 use the `npm run server` command at the `/server` directory.
 
   ## Documentación de la API
 

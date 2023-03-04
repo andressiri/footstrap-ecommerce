@@ -1,8 +1,16 @@
 # [<img src="/assets/README/logo-white-bg.png" alt="Footstrap logo" width="50"/>](https://footstrap-ecommerce-production.up.railway.app/) Footstrap ecommerce 
 
-* [Ir al sitio de Footstrap](https://footstrap-ecommerce-production.up.railway.app/)
-
 ***
+
+  ## Ir al sitio
+  
+  Es muy probable que el hosting del sitio no funcione del todo bien. Esto se debe a que los hosting son gratuitos y es probable que si no se ha ingresado en un tiempo (bastante corto) tarde en responder el servidor:
+  
+   * Con [Railway](https://railway.app/) posiblemente aparezca un error, pero no quiere decir que no funcione. Puede entonces tardar entre un minuto o dos en responder para poder acceder desde la primera vez que se ingresa: [Ir al sitio en Railway](https://footstrap-ecommerce-production.up.railway.app/)
+   
+   * Con [Render](https://render.com/) es probable que tarde al rededor de 30 segundos en cargar la apicación, y una vez cargada suele andar mal un par de minutos: [Ir al sition en Render](https://footstrap.onrender.com/)
+
+  ## Breve descripción
 
   Footstrap ecommerce es un sitio web para un comercio de zapatillas, donde los clientes pueden ver los productos en venta y el dueño de la tienda puede manejar que quiere mostrar. Por el momento, en el cliente es posible para el administrador elegir qué productos mostrar con ciertos detalles, modificarlos, agregar nuevos y eliminar otros. Del lado del servidor, la API permite manejar información para otras funcionalidades, como agregar y manejar marcas y el stock de cada producto.
 
@@ -39,7 +47,7 @@
 
       </details>
       
-  9. Crear un archivo .env en el directorio raíz con las siguientes variables:
+  9. Crear un archivo `.env` en el directorio `/client` con las siguientes variables:
 				<pre>
 					NODE_ENV = development
 					DB_USER = < "postgres" (default) o tu nombre de usuario para esa base de datos de PostgreSQL >

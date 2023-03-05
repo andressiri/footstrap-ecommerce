@@ -214,7 +214,7 @@
   
   It is very likely that the hosting of the site is not working properly. This is because the hosting is free and it is probable that if the had not been used for a (fairly short) time, it will take a while for the server to respond:
   
-   * With [Railway](https://railway.app/) you may possibly get an error, but it doesn't mean it won't work. It may then take a minute or two for the server to respond so that you can log in the first time: [Go to site on Railway](https://footstrap-ecommerce-production.up.railway.app/)
+   * With [Railway](https://railway.app/) you may possibly get an error, but it doesn't mean it won't work. It will then take a minute or two for the server to respond from the first time you tried to enter. After that, it should work fine: [Go to site on Railway](https://footstrap-ecommerce-production.up.railway.app/)
    
    * With [Render](https://render.com/) it is likely to take about 30 seconds to load the application, and once it is loaded it usually runs poorly for a couple of minutes: [Go to site in Render](https://footstrap.onrender.com/)
 

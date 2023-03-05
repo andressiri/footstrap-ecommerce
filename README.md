@@ -8,9 +8,9 @@
   
   Es muy probable que el hosting del sitio no funcione del todo bien. Esto se debe a que los hosting son gratuitos y es probable que si no se ha ingresado en un tiempo (bastante corto) tarde en responder el servidor:
   
-   * Con [Railway](https://railway.app/) posiblemente aparezca un error, pero no quiere decir que no funcione. Puede entonces tardar entre un minuto o dos en responder para poder acceder desde la primera vez que se ingresa: [Ir al sitio en Railway](https://footstrap-ecommerce-production.up.railway.app/)
+   * Con [Railway](https://railway.app/) posiblemente aparezca un error, pero no quiere decir que no funcione. Puede entonces tardar entre un minuto o dos en responder adecuadamente desde la primera vez que se ingresa. Luego de esto, debería funcionar correctamente: [Ir al sitio en Railway](https://footstrap-ecommerce-production.up.railway.app/)
    
-   * Con [Render](https://render.com/) es probable que tarde al rededor de 30 segundos en cargar la apicación, y una vez cargada suele andar mal un par de minutos: [Ir al sition en Render](https://footstrap.onrender.com/)
+   * Con [Render](https://render.com/) es probable que tarde alrededor de 30 segundos en cargar la apicación, y una vez cargada suele andar mal un par de minutos: [Ir al sition en Render](https://footstrap.onrender.com/)
 
   ## Breve descripción
 
@@ -212,7 +212,7 @@
 
   ## Go to site
   
-  It is very likely that the hosting of the site is not working properly. This is because the hosting is free and it is probable that if the had not been used for a (fairly short) time, it will take a while for the server to respond:
+  It is very likely that the hosting of the site is not working properly. This is because the hosting is free and it is probable that if the had not been used for certain (fairly short) time, it will take a while for the server to respond:
   
    * With [Railway](https://railway.app/) you may possibly get an error, but it doesn't mean it won't work. It will then take a minute or two for the server to respond from the first time you tried to enter. After that, it should work fine: [Go to site on Railway](https://footstrap-ecommerce-production.up.railway.app/)
    

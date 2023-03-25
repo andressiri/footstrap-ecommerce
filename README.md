@@ -11,6 +11,12 @@
    * Con [Railway](https://railway.app/) posiblemente aparezca un error, pero no quiere decir que no funcione. Puede entonces tardar entre un minuto o dos en responder adecuadamente desde la primera vez que se ingresa. Luego de esto, debería funcionar correctamente: [Ir al sitio en Railway](https://footstrap-ecommerce-production.up.railway.app/)
    
    * Con [Render](https://render.com/) es probable que tarde alrededor de 30 segundos en cargar la apicación, y una vez cargada suele andar mal un par de minutos: [Ir al sitio en Render](https://footstrap.onrender.com/)
+   
+  ### Usuario de prueba
+  
+  User: admin@test.com
+
+  Password: 123456
 
   ## Breve descripción
 
@@ -20,96 +26,8 @@
 
   ## Motivación para el proyecto
 
-  Este es un proyecto desarrollado para el desafío de la empresa [StoryDots](https://storydots.app/), donde quise poner en práctica lo ya aprendido y desafiarme a ser lo más efectivo posible. Como resultado, en menos de la mitad de tiempo que el último proyecto que desarollé por cuenta propia, similar a este, pude obtener un resultado notablemente mejor, lo cual me hizo sentir bastante satisfecho con la mejora en mis habilidades.
-
-  ## Estado actual
-
-  Al momento de la entrega, el proyecto se encuentra bastante incompleto en relación al potencial y los requerimientos básicos de un ecommerce, pero considero que cumple con creces lo solicitado para el desafío. Es posible obtener los productos que son guardados en una base de datos y verlos de distintas maneras, en listas, tarjetas o individualmente de forma más detallada. A su vez un usuario administrador puede crear productos nuevos, editar los productos ya existentes o eliminar el que quiera. Para los usuarios en general están desarolladas las funcionalidades básicas de registro, inicio de sesión, recuperación de contraseña, validación de correo electrónico, cambio de nombre, cambio de contraseña y eliminación de cuenta. Por el momento el registro de usuarios no tiene mucho sentido, ya que no hay grandes diferencias al tener una cuenta, pero abre el camino para desarrollar nuevas funcionalidades en un futuro. Con el correr del tiempo iré completando algunas cosas que me gustaría hacer en esta aplicación, en principio utilizar Docker y el servicio ECS de AWS. Luego, agregar la opción de filtrar los productos por marca, género y tipo, a la vez de poder ordenarlos por precio. Después, permitir al administrador agregar nuevas marcas y manejar el stock de los productos, pudiendo a su vez agregar ofertas para usuarios registrados. También desarrollar la posibilidad de que estos últimos puedan guardar en favoritos los productos que les hayan gustado, y hacer un carrito de compras y los formnularios de pagos. Sería importante también mejorar la vista de los productos, principalmente agregando la alguna fucionalidad para ver más fotos en la sección individual. Todas estas son cuestiones que podría resolver, incluso algunas ya están resueltas del lado del servidor, pero requieren de más tiempo para completarlas.
-
-  ## Instalación
-
-  Para instalar esta aplicación y probarla en desarrollo necesitas tener instaladas en tu computadora versiones actualizadas de `Node.js`, `NPM` y `Git` para poder:
-
-  1. Crear e ir a un nuevo directorio.
-  2. Inicializar un nuevo repositorio con el comando `git init`.
-  3. Obtener este repositorio remoto con el comando `git pull https://github.com/andressiri/footstrap-ecommerce`.
-  4. Instalar las dependencias del directorio raíz con el comando `npm install`.
-  5. Ir al directorio `/client` e instalar las dependencias con el comando `npm install` nuevamente.
-  6. Ir al directorio `/server` e instalar las dependencias con el comando `npm install` una vez más.
-  7. Crear un bucket con el servicio S3 de AWS.
-  8. Crear la base de datos PostgreSQL requerida:
-
-      <details>
-
-        <summary>Instalar el servidor PostgreSQL en tu computadora.</summary>
-
-        - Descargar el instalador en [el sitio oficial](https://www.postgresql.org/download/).
-        - En Windows considerar que es necesario haber ingresado como administrador o superusuario para realizar la instalación. De ser necesario, se recomienda seguir [las instrucciones para Windows provistas en el sitio oficial](https://www.enterprisedb.com/docs/supported-open-source/postgresql/installer/02_installing_postgresql_with_the_graphical_installation_wizard/01_invoking_the_graphical_installer/).
-        - En Mac OS considerar que hay que correr el paquete dmg descargado como usuario administrador. De ser necesario, se recomienda seguir [las instrucciones para Mac OS provistas en el sitio oficial](https://www.enterprisedb.com/postgres-tutorials/installation-postgresql-mac-os).
-        - En Ubuntu para Linux seguir [ las instrucciones provistas en el sitio oficial para Ubuntu](https://www.enterprisedb.com/postgres-tutorials/how-install-postgres-ubuntu).
-        - Necesitarás la constraseña que ingreses en la instalación para conectarte a la base de datos.
-
-      </details>
-      
-  9. Crear un archivo `.env` en el directorio `/client` con las siguientes variables:
-				<pre>
-					NODE_ENV = development
-					DB_USER = < "postgres" (default) o tu nombre de usuario para la base de datos de PostgreSQL >
-					DB_PASSWORD = < la contraseña para ese usuario de PostgreSQL >
-					DB_NAME = < el nombre que elijas para tu base de datos PostgreSQL >
-					DB_HOST = localhost
-					DB_PORT = 5432
-					JWT_SECRET = < una cadena que quieras usar como secreto para el token de JWT >
-					MAILER_MAIL = < tu dirección de email de <em><strong>gmail</strong></em> >
-					MAIL_PASSWORD" = < tu "contraseña de aplicación" generada desde google (no es la constraseña de tu email) >
-					AWS_ACCESS_KEY = < tu llave de acceso AWS >
-					AWS_SECRET_ACCESS_KEY = < tu llave de accesso secreta de AWS >
-					AWS_BUCKET_NAME = < el nombre del bucket del servicio S3 de AWS >
-				</pre>
-      
-      <details>
-
-      <summary>Cómo generar una contraseña de aplicación en Google</summary>
-
-      Para generar una nueva contraseña de aplicación seguir los siguientes pasos:
-
-      1. En una nueva pestaña de Chrome ir a "Gestionar tu cuenta de Google".
-
-          ![gestionar tu cuenta de google](/assets/README/gmail%20application%20password/1.%20Gestionar%20tu%20cuenta%20de%20Google.png)
-
-      2. Ir a "Iniciar sesión en Google" en la sección de "Seguridad" y clickear en "Contraseñas de aplicaciones". Notar que es necesario tener la verificación en dos pasos activada para poder hacer esto.
-
-          ![ir a contraseñas de aplicaciones](/assets/README/gmail%20application%20password/2.%20Ir%20a%20contrase%C3%B1as%20de%20aplicaciones.png)
-
-      3. Crear una nueva constraseña de aplicación, el nombre es indistinto.
-
-          ![crear una nueva constraseña de aplicación](/assets/README/gmail%20application%20password/3.%20Crear%20una%20nueva%20contrase%C3%B1a%20de%20aplicaci%C3%B3n.png)
-
-      4. Obtener la nueva contraseña de aplicación creada.
-
-          ![obtener la nueva contraseña de aplicación](/assets/README/gmail%20application%20password/4.%20Obtener%20la%20constrase%C3%B1a%20de%20aplicaci%C3%B3n.png)
-
-      </details>
-      
-  10. Crear la base de datos, hacer las migraciones y poblarla con el comando `npm run createDatabase`. Esto correrá tres comandos del cliente de Sequelize. El primero creará la base de datos, el segundo creará las tablas necesarias con las condiciones necesarias para el funcionamiento de la API y el tercero poblará la base de datos con productos y usuarios, entre ellos el usuario `admin@test.com` con contraseña `123456`, que servirá para probar las funcionalidades de la aplicación.
-  11. Finalmente, para correr el cliente en el puerto 3000 usar el comando `npm run client` en el directorio `/client`, y para el servidor en el puerto 8080 usar el comando `npm run server` en el directorio `/server`.
-
-  ## Documentación de la API
-
-  La API que brinda el servidor, creada para la aplicación, está [documentada y publicada con Postman](https://documenter.getpostman.com/view/16003276/UzJHQdAZ). Ahí puedes cargar y correr la API en postman directamente o usar postman en el navegador, utilizando el botón que dice "Run in Postman" ubicado en la esquina superior derecha de la ventana.
-
-  <details>
-
-  <summary> <a href="https://documenter.getpostman.com/view/16003276/UzJHQdAZ"><img src="/assets/README/API/Run%20in%20postman%20button.png" alt="Run in Postman button" ></a> </summary>
-
-  ![API postman documentation](/assets/README/API/API%20postman%20documentation.png)
-
-  </details>
-
-  ## Organización del código
+  Este es un proyecto desarrollado para el desafío de la empresa [StoryDots](https://storydots.app/), donde quise poner en práctica lo ya aprendido y desafiarme a ser lo más efectivo posible. Como resultado, en menos de la mitad de tiempo que el último proyecto que desarollé por cuenta propia, similar a este, pude obtener un resultado notablemente mejor, lo cual me hizo sentir bastante satisfecho con la mejora en mis habilidades.  
   
-  El código está organizado en archivos y directorios teniendo en cuenta la separación de intereses lo más posible. De esta manera los archivos tratan de ser lo más concisos que puedan y hacerse cargo de una sola acción de ser posible, incluso dando como resultado un archivo realmente corto, como algunos controladores en el directorio backend. Pero algunos de ellos deben agrupar varias acciones para encapsular una funcionalidad o una lógica, incluso si resultan en un archivo realmente largo, como los "slices" para el manejo de estados. Dicho esto, la mayor parte de la estructura y los nombres de los directorios en frontend siguen lo que es dado al usar `create-react-app` y el paquete `react-redux` que incluye Redux Toolkit.
-
   ## Tecnologías utilizadas
 
   Esta sección lista las tecnologías o frameworks que fueron utilizados para hacer le proyecto, con una breve descripción y la razón o intención de utlizarlas.
@@ -201,6 +119,94 @@
   - [AWS S3](https://aws.amazon.com/es/s3/): un servicio de almacenamiento de objetos de AWS, utilizado para almacenar las imágenes.
 
   </details>
+  
+  ## Estado actual
+
+  Al momento de la entrega, el proyecto se encuentra bastante incompleto en relación al potencial y los requerimientos básicos de un ecommerce, pero considero que cumple con creces lo solicitado para el desafío. Es posible obtener los productos que son guardados en una base de datos y verlos de distintas maneras, en listas, tarjetas o individualmente de forma más detallada. A su vez un usuario administrador puede crear productos nuevos, editar los productos ya existentes o eliminar el que quiera. Para los usuarios en general están desarolladas las funcionalidades básicas de registro, inicio de sesión, recuperación de contraseña, validación de correo electrónico, cambio de nombre, cambio de contraseña y eliminación de cuenta. Por el momento el registro de usuarios no tiene mucho sentido, ya que no hay grandes diferencias al tener una cuenta, pero abre el camino para desarrollar nuevas funcionalidades en un futuro. Con el correr del tiempo iré completando algunas cosas que me gustaría hacer en esta aplicación, en principio utilizar Docker y el servicio ECS de AWS. Luego, agregar la opción de filtrar los productos por marca, género y tipo, a la vez de poder ordenarlos por precio. Después, permitir al administrador agregar nuevas marcas y manejar el stock de los productos, pudiendo a su vez agregar ofertas para usuarios registrados. También desarrollar la posibilidad de que estos últimos puedan guardar en favoritos los productos que les hayan gustado, y hacer un carrito de compras y los formnularios de pagos. Sería importante también mejorar la vista de los productos, principalmente agregando la alguna fucionalidad para ver más fotos en la sección individual. Todas estas son cuestiones que podría resolver, incluso algunas ya están resueltas del lado del servidor, pero requieren de más tiempo para completarlas.
+  
+  ## Documentación de la API
+
+  La API que brinda el servidor, creada para la aplicación, está [documentada y publicada con Postman](https://documenter.getpostman.com/view/16003276/UzJHQdAZ). Ahí puedes cargar y correr la API en postman directamente o usar postman en el navegador, utilizando el botón que dice "Run in Postman" ubicado en la esquina superior derecha de la ventana.
+
+  <details>
+
+  <summary> <a href="https://documenter.getpostman.com/view/16003276/UzJHQdAZ"><img src="/assets/README/API/Run%20in%20postman%20button.png" alt="Run in Postman button" ></a> </summary>
+
+  ![API postman documentation](/assets/README/API/API%20postman%20documentation.png)
+
+  </details>
+
+  ## Instalación
+
+  Para instalar esta aplicación y probarla en desarrollo necesitas tener instaladas en tu computadora versiones actualizadas de `Node.js`, `NPM` y `Git` para poder:
+
+  1. Crear e ir a un nuevo directorio.
+  2. Inicializar un nuevo repositorio con el comando `git init`.
+  3. Obtener este repositorio remoto con el comando `git pull https://github.com/andressiri/footstrap-ecommerce`.
+  4. Instalar las dependencias del directorio raíz con el comando `npm install`.
+  5. Ir al directorio `/client` e instalar las dependencias con el comando `npm install` nuevamente.
+  6. Ir al directorio `/server` e instalar las dependencias con el comando `npm install` una vez más.
+  7. Crear un bucket con el servicio S3 de AWS.
+  8. Crear la base de datos PostgreSQL requerida:
+
+      <details>
+
+        <summary>Instalar el servidor PostgreSQL en tu computadora.</summary>
+
+        - Descargar el instalador en [el sitio oficial](https://www.postgresql.org/download/).
+        - En Windows considerar que es necesario haber ingresado como administrador o superusuario para realizar la instalación. De ser necesario, se recomienda seguir [las instrucciones para Windows provistas en el sitio oficial](https://www.enterprisedb.com/docs/supported-open-source/postgresql/installer/02_installing_postgresql_with_the_graphical_installation_wizard/01_invoking_the_graphical_installer/).
+        - En Mac OS considerar que hay que correr el paquete dmg descargado como usuario administrador. De ser necesario, se recomienda seguir [las instrucciones para Mac OS provistas en el sitio oficial](https://www.enterprisedb.com/postgres-tutorials/installation-postgresql-mac-os).
+        - En Ubuntu para Linux seguir [ las instrucciones provistas en el sitio oficial para Ubuntu](https://www.enterprisedb.com/postgres-tutorials/how-install-postgres-ubuntu).
+        - Necesitarás la constraseña que ingreses en la instalación para conectarte a la base de datos.
+
+      </details>
+      
+  9. Crear un archivo `.env` en el directorio `/client` con las siguientes variables:
+				<pre>
+					NODE_ENV = development
+					DB_USER = < "postgres" (default) o tu nombre de usuario para la base de datos de PostgreSQL >
+					DB_PASSWORD = < la contraseña para ese usuario de PostgreSQL >
+					DB_NAME = < el nombre que elijas para tu base de datos PostgreSQL >
+					DB_HOST = localhost
+					DB_PORT = 5432
+					JWT_SECRET = < una cadena que quieras usar como secreto para el token de JWT >
+					MAILER_MAIL = < tu dirección de email de <em><strong>gmail</strong></em> >
+					MAIL_PASSWORD" = < tu "contraseña de aplicación" generada desde google (no es la constraseña de tu email) >
+					AWS_ACCESS_KEY = < tu llave de acceso AWS >
+					AWS_SECRET_ACCESS_KEY = < tu llave de accesso secreta de AWS >
+					AWS_BUCKET_NAME = < el nombre del bucket del servicio S3 de AWS >
+				</pre>
+      
+      <details>
+
+      <summary>Cómo generar una contraseña de aplicación en Google</summary>
+
+      Para generar una nueva contraseña de aplicación seguir los siguientes pasos:
+
+      1. En una nueva pestaña de Chrome ir a "Gestionar tu cuenta de Google".
+
+          ![gestionar tu cuenta de google](/assets/README/gmail%20application%20password/1.%20Gestionar%20tu%20cuenta%20de%20Google.png)
+
+      2. Ir a "Iniciar sesión en Google" en la sección de "Seguridad" y clickear en "Contraseñas de aplicaciones". Notar que es necesario tener la verificación en dos pasos activada para poder hacer esto.
+
+          ![ir a contraseñas de aplicaciones](/assets/README/gmail%20application%20password/2.%20Ir%20a%20contrase%C3%B1as%20de%20aplicaciones.png)
+
+      3. Crear una nueva constraseña de aplicación, el nombre es indistinto.
+
+          ![crear una nueva constraseña de aplicación](/assets/README/gmail%20application%20password/3.%20Crear%20una%20nueva%20contrase%C3%B1a%20de%20aplicaci%C3%B3n.png)
+
+      4. Obtener la nueva contraseña de aplicación creada.
+
+          ![obtener la nueva contraseña de aplicación](/assets/README/gmail%20application%20password/4.%20Obtener%20la%20constrase%C3%B1a%20de%20aplicaci%C3%B3n.png)
+
+      </details>
+      
+  10. Crear la base de datos, hacer las migraciones y poblarla con el comando `npm run createDatabase`. Esto correrá tres comandos del cliente de Sequelize. El primero creará la base de datos, el segundo creará las tablas necesarias con las condiciones necesarias para el funcionamiento de la API y el tercero poblará la base de datos con productos y usuarios, entre ellos el usuario `admin@test.com` con contraseña `123456`, que servirá para probar las funcionalidades de la aplicación.
+  11. Finalmente, para correr el cliente en el puerto 3000 usar el comando `npm run client` en el directorio `/client`, y para el servidor en el puerto 8080 usar el comando `npm run server` en el directorio `/server`.
+
+  ## Organización del código
+  
+  El código está organizado en archivos y directorios teniendo en cuenta la separación de intereses lo más posible. De esta manera los archivos tratan de ser lo más concisos que puedan y hacerse cargo de una sola acción de ser posible, incluso dando como resultado un archivo realmente corto, como algunos controladores en el directorio backend. Pero algunos de ellos deben agrupar varias acciones para encapsular una funcionalidad o una lógica, incluso si resultan en un archivo realmente largo, como los "slices" para el manejo de estados. Dicho esto, la mayor parte de la estructura y los nombres de los directorios en frontend siguen lo que es dado al usar `create-react-app` y el paquete `react-redux` que incluye Redux Toolkit.
 
 </details>
 
@@ -217,6 +223,12 @@
    * With [Railway](https://railway.app/) you may possibly get an error, but it doesn't mean it won't work. It will then take a minute or two for the server to respond from the first time you tried to enter. After that, it should work fine: [Go to site on Railway](https://footstrap-ecommerce-production.up.railway.app/)
    
    * With [Render](https://render.com/) it is likely to take about 30 seconds to load the application, and once it is loaded it usually runs poorly for a couple of minutes: [Go to site in Render](https://footstrap.onrender.com/)
+  
+  ### Test user
+  
+  User: admin@test.com
+
+  Password: 123456
 
   ## Brief description
 
@@ -227,95 +239,7 @@
   ## Motivation for the project
 
   This is a project developed for the [StoryDots](https://storydots.app/) challenge, where I wanted to put into practice what I had already learned and challenge myself to be the most effective I could be. As a result, in less than half the time of the last project I developed on my own, similar to this one, I was able to get a noticeably better result, which made me feel quite satisfied with the improvement in my skills.
-
-  ## Build status
-
-  At the time of delivery, the project is quite incomplete in relation to the potential and the basic requirements of an ecommerce, but I consider that it is far better than what was requested for the challenge. It is possible to obtain the products that are stored in a database and view them in different ways, in lists, cards or individually in more detail. In sum, an administrator user can create new products, edit existing products or delete the ones he/she wants. For users in general the basic functionalities of registration, login, password recovery, email validation, name change, password change and account deletion are developed. For the moment the user registration does not make much sense, since there are no big differences in having an account, but it opens the road for developing new functionalities in the future. As time goes by I will complete some things I would like to do in this application, at first using Docker and the AWS ECS service. Then, add the option to filter products by brand, genre and type, and to sort them by price. Then, allow the administrator to add new brands and manage the stock of products, being able to add offers for registered users. Also develop the possibility for the latter to save in favorites the products they have liked, and make a shopping cart and payment forms. It would also be important to improve the view of the products, mainly by adding functionalities to see more photos individually. All these are issues that I could solve, even some of them are already solved on the server side, but they require more time to complete them.
-
-  ## Installation
-
-  To install this application and test it in development you need to have updated versions of `Node.js`, `NPM` and `Git` installed on your computer in order to be able to:
-
-  1. Create and go to a new directory.
-  2. Initialize a new repository with `git init` command.
-  3. Obtain this repository with the command `git pull https://github.com/andressiri/footstrap-ecommerce`.
-  4. Install root drectory dependencies with the `npm install` command.
-  5. Move to `/client` directory and install the dependencies with the command `npm install` again.
-  6. Move to `/server` directory and install the dependencies with the command `npm install` one last time.
-  7. Create a bucket with the AWS S3 service.
-  8. Create the required PostgreSQL database:
-
-      <details>
-
-        <summary>Install PostgreSQL server in your computer.</summary>
-
-        - Download the installer at [official site](https://www.postgresql.org/download/).
-        - In Windows consider you need to be logged as administrator or superuser to perform and installation. If needed, follow the [instructions provided at official site for Windows](https://www.enterprisedb.com/docs/supported-open-source/postgresql/installer/02_installing_postgresql_with_the_graphical_installation_wizard/01_invoking_the_graphical_installer/).
-        - In Mac OS consider you have to run the downloaded dmg package as administrator user. If needed, follow the [instructions provided at official site for Mac OS](https://www.enterprisedb.com/postgres-tutorials/installation-postgresql-mac-os).
-        - In Ubuntu for Linux follow the [instructions provided at official site for Ubuntu](https://www.enterprisedb.com/postgres-tutorials/how-install-postgres-ubuntu).
-        - You will need the password your enter in the installation to connect to the database.
-
-      </details>
-      
-  9. Create a `.env` file at `/client` directory with the following variables:
-				<pre>
-					NODE_ENV = development
-					DB_USER = < "postgres" (default) or your user name for the PostgreSQL database >
-					DB_PASSWORD = < the password for that PostgreSQL user >
-					DB_NAME = < a name of your choice for the PostgreSQL database >
-					DB_HOST = localhost
-					DB_PORT = 5432
-					JWT_SECRET = < a string you want to use as secret for the JWT token >
-					MAILER_MAIL = < your <em><strong>gmail</strong></em> email address >
-  				        MAIL_PASSWORD" = < the "application password" generated with google > (not your email password)
-					AWS_ACCESS_KEY = < your AWS access key >
-					AWS_SECRET_ACCESS_KEY = < your secret AWS access key >
-					AWS_BUCKET_NAME = < the name of the bucket from AWS S3 service >
-				</pre>
-      
-      <details>
-
-      <summary>How to generate application password</summary>
-
-      To generate a new application password follow the next steps:
-
-      1. In a new Chrome tab go to "Manage your Google Account".
-
-          ![go to Manage your Google Account](/assets/README/gmail%20application%20password/1.%20Manage%20your%20google%20account.png)
-
-      2. Go to "Signing in to Google" in the "Security" section and click into "App passwords". Notice you must have your 2-Step Verification activated in order to do this.
-
-          ![go to app passwords](/assets/README/gmail%20application%20password/2.%20Go%20to%20app%20passwords.png)
-
-      3. Create a new application password, you can name it as you want.
-
-          ![create a new application password](/assets/README/gmail%20application%20password/3.%20Create%20a%20new%20application%20password.png)
-
-      4. Get the new password created.
-
-          ![get the new password](/assets/README/gmail%20application%20password/4.%20Get%20the%20new%20password.png)
-
-      </details>
-      
-  10. Create the database, do the migrations and populate it with the `npm run createDatabase` command. This will run three Sequelize client commands. The first will create the database, the second will create the necessary tables with the necessary conditions for the API to work and the third will populate the database with products and users, including the user `admin@test.com` with password `123456`, which should be used to test the functionality of the application.
-  11. Finally, to run the client on port 3000 use the `npm run client` command at the `/client` directory, and for the server on port 8080 use the `npm run server` command at the `/server` directory.
-
-  ## API Documentation
-
-  The API provided by the server, created for the application, is [documented and published with Postman](https://documenter.getpostman.com/view/16003276/UzJHQdAZ). There you can load and run the API in postman directly or use postman in the browser, using the "Run in Postman" button located in the upper right corner of the window.
-
-  <details>
-
-  <summary> <a href="https://documenter.getpostman.com/view/16003276/UzJHQdAZ"><img src="/assets/README/API/Run%20in%20postman%20button.png" alt="Run in Postman button" ></a> </summary>
-
-  ![API postman documentation](/assets/README/API/API%20postman%20documentation.png)
-
-  </details>
-
-  ## Code arrangement
   
-  The code is organized in files and directories taking in consideration the separation of interests as much as possible. In this way the files try to be as concise as possible and take care of just a single action if they can, even resulting in a really short file, like some controllers in the backend directory. But some of them should group several actions together to encapsulate a functionality or logic, even if they result in a really long file, like slices for state handling. That said, most of the frontend directory structure and names follow what is given by using `create-react-app` and the `react-redux` package included with `Redux Toolkit`.
-
   ## Technologies used
 
   This section lists technologies or frameworks that have been used to do the project, with a brief description and the reason or intention of using them.
@@ -407,5 +331,93 @@
   - [AWS S3](https://aws.amazon.com/s3/): an AWS object storage service used to store the images.
 
   </details>
+
+  ## Build status
+
+  At the time of delivery, the project is quite incomplete in relation to the potential and the basic requirements of an ecommerce, but I consider that it is far better than what was requested for the challenge. It is possible to obtain the products that are stored in a database and view them in different ways, in lists, cards or individually in more detail. In sum, an administrator user can create new products, edit existing products or delete the ones he/she wants. For users in general the basic functionalities of registration, login, password recovery, email validation, name change, password change and account deletion are developed. For the moment the user registration does not make much sense, since there are no big differences in having an account, but it opens the road for developing new functionalities in the future. As time goes by I will complete some things I would like to do in this application, at first using Docker and the AWS ECS service. Then, add the option to filter products by brand, genre and type, and to sort them by price. Then, allow the administrator to add new brands and manage the stock of products, being able to add offers for registered users. Also develop the possibility for the latter to save in favorites the products they have liked, and make a shopping cart and payment forms. It would also be important to improve the view of the products, mainly by adding functionalities to see more photos individually. All these are issues that I could solve, even some of them are already solved on the server side, but they require more time to complete them.
+  
+  ## API Documentation
+
+  The API provided by the server, created for the application, is [documented and published with Postman](https://documenter.getpostman.com/view/16003276/UzJHQdAZ). There you can load and run the API in postman directly or use postman in the browser, using the "Run in Postman" button located in the upper right corner of the window.
+
+  <details>
+
+  <summary> <a href="https://documenter.getpostman.com/view/16003276/UzJHQdAZ"><img src="/assets/README/API/Run%20in%20postman%20button.png" alt="Run in Postman button" ></a> </summary>
+
+  ![API postman documentation](/assets/README/API/API%20postman%20documentation.png)
+
+  </details>
+
+  ## Installation
+
+  To install this application and test it in development you need to have updated versions of `Node.js`, `NPM` and `Git` installed on your computer in order to be able to:
+
+  1. Create and go to a new directory.
+  2. Initialize a new repository with `git init` command.
+  3. Obtain this repository with the command `git pull https://github.com/andressiri/footstrap-ecommerce`.
+  4. Install root drectory dependencies with the `npm install` command.
+  5. Move to `/client` directory and install the dependencies with the command `npm install` again.
+  6. Move to `/server` directory and install the dependencies with the command `npm install` one last time.
+  7. Create a bucket with the AWS S3 service.
+  8. Create the required PostgreSQL database:
+
+      <details>
+
+        <summary>Install PostgreSQL server in your computer.</summary>
+
+        - Download the installer at [official site](https://www.postgresql.org/download/).
+        - In Windows consider you need to be logged as administrator or superuser to perform and installation. If needed, follow the [instructions provided at official site for Windows](https://www.enterprisedb.com/docs/supported-open-source/postgresql/installer/02_installing_postgresql_with_the_graphical_installation_wizard/01_invoking_the_graphical_installer/).
+        - In Mac OS consider you have to run the downloaded dmg package as administrator user. If needed, follow the [instructions provided at official site for Mac OS](https://www.enterprisedb.com/postgres-tutorials/installation-postgresql-mac-os).
+        - In Ubuntu for Linux follow the [instructions provided at official site for Ubuntu](https://www.enterprisedb.com/postgres-tutorials/how-install-postgres-ubuntu).
+        - You will need the password your enter in the installation to connect to the database.
+
+      </details>
+      
+  9. Create a `.env` file at `/client` directory with the following variables:
+				<pre>
+					NODE_ENV = development
+					DB_USER = < "postgres" (default) or your user name for the PostgreSQL database >
+					DB_PASSWORD = < the password for that PostgreSQL user >
+					DB_NAME = < a name of your choice for the PostgreSQL database >
+					DB_HOST = localhost
+					DB_PORT = 5432
+					JWT_SECRET = < a string you want to use as secret for the JWT token >
+					MAILER_MAIL = < your <em><strong>gmail</strong></em> email address >
+  				        MAIL_PASSWORD" = < the "application password" generated with google > (not your email password)
+					AWS_ACCESS_KEY = < your AWS access key >
+					AWS_SECRET_ACCESS_KEY = < your secret AWS access key >
+					AWS_BUCKET_NAME = < the name of the bucket from AWS S3 service >
+				</pre>
+      
+      <details>
+
+      <summary>How to generate application password</summary>
+
+      To generate a new application password follow the next steps:
+
+      1. In a new Chrome tab go to "Manage your Google Account".
+
+          ![go to Manage your Google Account](/assets/README/gmail%20application%20password/1.%20Manage%20your%20google%20account.png)
+
+      2. Go to "Signing in to Google" in the "Security" section and click into "App passwords". Notice you must have your 2-Step Verification activated in order to do this.
+
+          ![go to app passwords](/assets/README/gmail%20application%20password/2.%20Go%20to%20app%20passwords.png)
+
+      3. Create a new application password, you can name it as you want.
+
+          ![create a new application password](/assets/README/gmail%20application%20password/3.%20Create%20a%20new%20application%20password.png)
+
+      4. Get the new password created.
+
+          ![get the new password](/assets/README/gmail%20application%20password/4.%20Get%20the%20new%20password.png)
+
+      </details>
+      
+  10. Create the database, do the migrations and populate it with the `npm run createDatabase` command. This will run three Sequelize client commands. The first will create the database, the second will create the necessary tables with the necessary conditions for the API to work and the third will populate the database with products and users, including the user `admin@test.com` with password `123456`, which should be used to test the functionality of the application.
+  11. Finally, to run the client on port 3000 use the `npm run client` command at the `/client` directory, and for the server on port 8080 use the `npm run server` command at the `/server` directory.
+
+  ## Code arrangement
+  
+  The code is organized in files and directories taking in consideration the separation of interests as much as possible. In this way the files try to be as concise as possible and take care of just a single action if they can, even resulting in a really short file, like some controllers in the backend directory. But some of them should group several actions together to encapsulate a functionality or logic, even if they result in a really long file, like slices for state handling. That said, most of the frontend directory structure and names follow what is given by using `create-react-app` and the `react-redux` package included with `Redux Toolkit`.
 
 </details>

@@ -161,7 +161,7 @@
 
       </details>
       
-  9. Crear un archivo `.env` en el directorio `/client` con las siguientes variables:
+  9. Crear un archivo `.env` en el directorio `/server` con las siguientes variables:
 				<pre>
 					NODE_ENV = development
 					DB_USER = < "postgres" (default) o tu nombre de usuario para la base de datos de PostgreSQL >
@@ -373,7 +373,7 @@
 
       </details>
       
-  9. Create a `.env` file at `/client` directory with the following variables:
+  9. Create a `.env` file at `/server` directory with the following variables:
 				<pre>
 					NODE_ENV = development
 					DB_USER = < "postgres" (default) or your user name for the PostgreSQL database >
